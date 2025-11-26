@@ -1,0 +1,923 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="he" dir="rtl"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;לוח אימפקט – דמו&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bg: #050816;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bg-elevated: #0b1020;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bg-card: #101828;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--accent: #4f46e5;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--accent-soft: rgba(79, 70, 229, 0.15);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text-main: #e5e7eb;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text-muted: #9ca3af;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--border-subtle: #1f2937;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--danger: #ef4444;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--success: #22c55e;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--warning: #facc15;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--radius-lg: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--radius-sm: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.65);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--transition-fast: 0.18s ease-out;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>* {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-sizing: border-box;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at top, #1e293b 0, #020617 40%, #000 100%);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>min-height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>direction: rtl;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">    </span>/* עטיפה חיצונית – בסיסית כברירת מחדל (מובייל/טאבלט) */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.frame-16x9 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 1320px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.app {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 1320px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(145deg, rgba(15,23,42,0.98), rgba(15,23,42,0.93));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148, 163, 184, 0.2);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: var(--shadow-soft);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 20px 22px 24px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>backdrop-filter: blur(16px);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">    </span>/* דסקטופ 16:9 – היחס נשמר, הדשבורד גולל פנימה אם צריך */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (min-width: 1024px) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>.frame-16x9 {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding-top: 56.25%; /* 9/16 = 0.5625 =&gt; 56.25% =&gt; יחס 16:9 */</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>.frame-16x9 .app {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>inset: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>overflow: auto;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Top bar */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.top-bar {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 1px solid var(--border-subtle);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.brand {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.brand-icon {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 34px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 34px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at 20% 20%, #f97316, #4f46e5);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 10px 25px rgba(15, 23, 42, 0.8);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.brand-title {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 2px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.brand-title h1 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.02em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.brand-title span {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.controls {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: flex-end;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.tag-pill {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 11px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 6px 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15, 118, 110, 0.16);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(45, 212, 191, 0.3);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #a5f3fc;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: inline-flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.tag-dot {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #22c55e;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.select,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.button-ghost {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--border-subtle);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15, 23, 42, 0.7);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 6px 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: inline-flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.select:hover,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.button-ghost:hover {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(30, 64, 175, 0.32);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-color: rgba(129, 140, 248, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transform: translateY(-1px);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.button-primary {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(135deg, #4f46e5, #7c3aed);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 7px 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: inline-flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 10px 25px rgba(55, 48, 163, 0.55);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.button-primary:hover {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transform: translateY(-1px);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>filter: brightness(1.05);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 14px 35px rgba(55, 48, 163, 0.75);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Layout main grid */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.grid-main {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.6fr);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-template-rows: auto auto auto;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.grid-full {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-column: 1 / -1;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.6fr);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.18), transparent 55%),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>linear-gradient(145deg, rgba(15,23,42,0.98), rgba(15,23,42,0.92));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius-lg);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(31, 41, 55, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 14px 14px 15px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 12px 30px rgba(15, 23, 42, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card-header {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card-title {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 500;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.02em;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card-title span.icon {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(148, 163, 184, 0.12);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: inline-flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 11px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card-subtitle {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 11px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.badge-soft {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 11px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 4px 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15, 23, 42, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(75, 85, 99, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>white-space: nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* KPI row */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.kpi-row {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(4, minmax(0, 1fr));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.kpi-card {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at top, rgba(79,70,229,0.22), transparent 65%);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius-sm);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px 10px 11px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(55, 65, 81, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.kpi-label {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 11px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.kpi-value {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 17px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.01em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.kpi-trend {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 11px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.trend-up { color: var(--success); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.trend-down { color: var(--danger); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.trend-neutral { color: var(--warning); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.progress-track {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15, 23, 42, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.progress-fill {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: inherit;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(90deg, #4f46e5, #22c55e);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 68%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Pills &amp; lists */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill-row {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 4px 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15, 23, 42, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(55, 65, 81, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.list {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.list-item {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.list-item-main {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 2px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.list-title { font-size: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.list-meta { font-size: 11px; color: var(--text-muted); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.list-metric { font-size: 13px; font-weight: 500; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.tag-soft {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 3px 7px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15, 23, 42, 0.85);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(55, 65, 81, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>white-space: nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Digital */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill-legend {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill-legend span::before {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>content: "●";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-left: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 9px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill-legend .insta::before { color: #e11d48; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill-legend .tiktok::before { color: #22c55e; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill-legend .fb::before { color: #0ea5e9; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.mini-chart {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 90px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at top, rgba(79, 70, 229, 0.28), transparent 60%);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(31, 41, 55, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 7px 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: flex-end;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.bar {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex: 1;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 4px 4px 999px 999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(180deg, rgba(129, 140, 248, 0.95), rgba(30, 64, 175, 0.05));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.bar::after {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>content: "";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>inset: auto 0 0 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 28%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(180deg, rgba(248, 250, 252, 0.55), transparent);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>mix-blend-mode: screen;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.bar:nth-child(1) { height:55%; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.bar:nth-child(2) { height:70%; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.bar:nth-child(3) { height:90%; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.bar:nth-child(4) { height:60%; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.bar:nth-child(5) { height:75%; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.mini-chart-x {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Stats */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.chips-row {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 11px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.chip {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 4px 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15, 23, 42, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(55, 65, 81, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat-grid-2 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(2, minmax(0, 1fr));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat-box {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 11px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 7px 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15, 23, 42, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(55, 65, 81, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 2px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat-label { color: var(--text-muted); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat-value { font-size: 14px; font-weight: 500; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Insights */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.insights-list {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.insight {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.insight-icon {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 1px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.insight-text {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 2px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.insight-title { font-weight: 500; font-size: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.insight-meta { font-size: 11px; color: var(--text-muted); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Responsive */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 1024px) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.grid-main {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: minmax(0, 1fr);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>.grid-full {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: minmax(0, 1fr);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>.kpi-row {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: repeat(2, minmax(0, 1fr));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 720px) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>body { padding: 12px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>.app {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 14px 12px 16px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>.top-bar {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>align-items: flex-start;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>.controls {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>justify-content: flex-start;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>.kpi-row {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: minmax(0, 1fr);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>.card {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 12px 11px 13px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="frame-16x9"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="app"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- Top bar --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="top-bar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="brand"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="brand-icon"&gt;ID&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="brand-title"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;Impact Dashboard&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;שטח · דיגיטל · תקשורת · מרצ'נדייז · אימפקט&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="controls"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="tag-pill"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="tag-dot"&gt;&lt;/span&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">            </span>ניטור קמפיין בזמן אמת</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="select"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">            </span>קמפיין: מטה משפחות החטופים ▼</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="select"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">            </span>7 ימים אחרונים ▼</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="button-primary"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">            </span>⇪ יצוא צילום מצב</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- KPI row --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card-title"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="icon"&gt;◎&lt;/span&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">              </span>סטטוס קמפיין – השבוע</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card-subtitle"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">              </span>מבט משולב על שטח, דיגיטל, תקשורת והמרה לפעולה.</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="badge-soft"&gt;עודכן לפני 3 דקות&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="kpi-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="kpi-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="kpi-label"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">              </span>חשיפה כוללת</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="kpi-trend trend-up"&gt;↑ 18%&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="kpi-value"&gt;482,000&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="progress-track"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="progress-fill" style="width:72%"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="kpi-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="kpi-label"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">              </span>מתנדבים פעילים</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="kpi-trend trend-up"&gt;↑ 9%&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="kpi-value"&gt;136&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="progress-track"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="progress-fill" style="width:64%"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="kpi-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="kpi-label"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">              </span>אזכורים בתקשורת</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="kpi-trend trend-neutral"&gt;• יציב&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="kpi-value"&gt;18&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="progress-track"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="progress-fill" style="width:50%"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="kpi-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="kpi-label"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">              </span>מהלכים משמעותיים</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="kpi-trend trend-up"&gt;↑ אימפקט&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="kpi-value"&gt;4&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="progress-track"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="progress-fill" style="width:80%"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- Main grid --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="grid-main"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Field activity --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="card-title"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="icon"&gt;🏙&lt;/span&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                </span>פעילות שטח</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="card-subtitle"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                </span>אירועים, משתתפים ונוכחות פיזית.</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="badge-soft"&gt;7 אירועים · 2,350 משתתפים&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="pill-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="pill"&gt;הפגנות: 2&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="pill"&gt;קמפוסים: 3&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="pill"&gt;דוכנים: 2&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="list"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="list-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="list-item-main"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="list-title"&gt;תל אביב – הפגנה מרכזית&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="list-meta"&gt;1,200 משתתפים · רוטשילד · 3 שעות&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="list-metric"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="tag-soft"&gt;אימפקט גבוה&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="list-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="list-item-main"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="list-title"&gt;ירושלים – עצרת משפחות&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="list-meta"&gt;600 משתתפים · מול הכנסת&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="list-metric"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="tag-soft"&gt;סיקור תקשורתי&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="list-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="list-item-main"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="list-title"&gt;פעילות בקמפוסים – 3 מוסדות&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="list-meta"&gt;550 אינטראקציות · 310 פרטים חדשים&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="list-metric"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="tag-soft"&gt;משפך מתנדבים&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Digital --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="card-title"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="icon"&gt;📱&lt;/span&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                </span>ביצועי דיגיטל</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="card-subtitle"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                </span>חשיפה, מעורבות ותנועה לפעולה לפי פלטפורמה.</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="badge-soft"&gt;רב־פלטפורמי&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="pill-legend"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="insta"&gt;אינסטגרם&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="tiktok"&gt;טיקטוק&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="fb"&gt;פייסבוק&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="mini-chart"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bar"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bar"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bar"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bar"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bar"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="mini-chart-x"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;א'&lt;/span&gt;&lt;span&gt;ב'&lt;/span&gt;&lt;span&gt;ג'&lt;/span&gt;&lt;span&gt;ד'&lt;/span&gt;&lt;span&gt;ה'&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stat-grid-2" style="margin-top:10px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat-box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stat-label"&gt;חשיפה שבועית&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stat-value"&gt;450k&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stat-label"&gt;↑ 22% מול שבוע קודם&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat-box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stat-label"&gt;קליקים לפעולה&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stat-value"&gt;3,200&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stat-label"&gt;הרשמה · תרומה · שיתוף&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Media &amp; merch + Impact &amp; team --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="grid-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Media &amp; merch --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-title"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;span class="icon"&gt;📰&lt;/span&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                  </span>תקשורת ומרצ'נדייז</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-subtitle"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                  </span>נראטיב בתקשורת ומרצ'נדייז כמנוע קשר.</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="badge-soft"&gt;18 אזכורים · 3k פריטים&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="chips-row" style="margin-bottom:8px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="chip"&gt;טלוויזיה: 3&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="chip"&gt;רדיו: 4&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="chip"&gt;אתרי חדשות: 9&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="chip"&gt;פודקאסטים: 2&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat-grid-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stat-box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="stat-label"&gt;סיקור חיובי / ניטרלי&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="stat-value"&gt;12 / 5&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="stat-label"&gt;אייטם שלילי אחד במעקב&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stat-box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="stat-label"&gt;חזרת מסר ליבה&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="stat-value"&gt;78%&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="stat-label"&gt;"המשפחות דורשות אחריות"&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="margin-top:10px; font-size:11px; color:var(--text-muted);"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">              </span>מרצ'נדייז כמשפך קשר (השבוע):</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat-grid-2" style="margin-top:6px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stat-box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="stat-label"&gt;פריטים שחולקו&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="stat-value"&gt;1,620&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="stat-label"&gt;חולצות, צמידים, דגלים&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stat-box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="stat-label"&gt;אנשים שנכנסו למעגל&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="stat-value"&gt;260&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="stat-label"&gt;45 הפכו למתנדבי ליבה&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Impact &amp; team (insights) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-title"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;span class="icon"&gt;⚡&lt;/span&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                  </span>תובנות והמלצות המשך</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-subtitle"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                  </span>תובנות אוטומטיות על בסיס נתוני השטח, הדיגיטל והתקשורת.</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="badge-soft"&gt;לשימוש הנהלת הקמפיין&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="insights-list"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="insight"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="insight-icon"&gt;➀&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="insight-text"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="insight-title"&gt;חיזוק נוכחות בצפון&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="insight-meta"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                    </span>מעורבות דיגיטלית גבוהה מחיפה והגליל, כמעט ללא אירועי שטח השבוע.</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="insight"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="insight-icon"&gt;➁&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="insight-text"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="insight-title"&gt;שכפול פורמט "עדות מהשטח"&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="insight-meta"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                    </span>סרטוני וידאו קצרים עם עדויות אישיות אחראים ל־65% מהמעורבות באינסטגרם וטיקטוק.</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="insight"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="insight-icon"&gt;➂&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="insight-text"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="insight-title"&gt;המרת מרצ'נדייז למתנדבי ליבה&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="insight-meta"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                    </span>מומלץ לייצר מהלך המשך ייעודי ל־260 אנשי קשר שנאספו דרך מרצ'נדייז – פוטנציאל גבוה לגיוס פעילים.</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="insight"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="insight-icon"&gt;➃&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="insight-text"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="insight-title"&gt;יישור מסרים בין כל הזירות&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="insight-meta"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                    </span>לוודא שמסר שבועי אחד עובר לשטח, לדוברים ולדיגיטל – נראטיב אחד, מופעים שונים.</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Team &amp; volunteers card --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card" style="grid-column: 1 / -1;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="card-title"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="icon"&gt;👥&lt;/span&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                </span>צוות, מתנדבים ומשאבים</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="card-subtitle"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                </span>מבט על המודל ההיברידי – אנשי מקצוע ומתנדבים.</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="badge-soft"&gt;42 מתנדבי ליבה · 136 פעילים השבוע&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stat-grid-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat-box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stat-label"&gt;אנשי מקצוע בליבת הקמפיין&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stat-value"&gt;7&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stat-label"&gt;קריאייטיב, דיגיטל, מדיה, שטח&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat-box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stat-label"&gt;מתנדבים פעילים השבוע&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stat-value"&gt;136&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stat-label"&gt;42 מתנדבים קבועים&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="list" style="margin-top:10px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="list-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="list-item-main"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="list-title"&gt;ימי שיא פעילות&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="list-meta"&gt;ראשון, שלישי, חמישי – עומס גבוה בשטח ובדיגיטל&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="list-metric"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="tag-soft"&gt;לתגבר צוות&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="list-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="list-item-main"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="list-title"&gt;פערי כיסוי&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="list-meta"&gt;צפון ודרום – פעילות דיגיטלית קיימת, מעט מתנדבים בשטח&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="list-metric"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="tag-soft"&gt;איתור רכזים מקומיים&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt; &lt;!-- /grid-main --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt; &lt;!-- /app --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt; &lt;!-- /frame-16x9 --&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
