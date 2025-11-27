@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      /* צבעי רקע וטקסט */
-      --bg: #f3f4f6;            /* אפור בהיר רקע כללי */
+      /* צבעי רקע וטקסט מדויקים */
+      --bg: #e6e7e2;            /* רקע אפור בהיר */
       --bg-elevated: #ffffff;   /* רקע אלמנטים מוגבהים */
-      --bg-card: #f9fafb;       /* רקע כרטיסים */
-      --accent: #1d4ed8;        /* כחול ראשי */
-      --accent-soft: rgba(37, 99, 235, 0.06);
+      --bg-card: #f5f5f2;       /* רקע כרטיסים */
+      --accent: #1800ad;        /* כחול מותג */
+      --accent-soft: rgba(24, 0, 173, 0.06);
 
-      --text-main: #1d4ed8;     /* טקסט כחול */
+      --text-main: #1800ad;     /* טקסט כחול */
       --text-muted: #4b5563;    /* טקסט משני אפור כהה */
       --border-subtle: #d1d5db; /* גבול עדין */
 
@@ -54,7 +54,7 @@
     .app {
       max-width: 1320px;
       width: 100%;
-      background: linear-gradient(145deg, var(--bg-elevated), #eef2ff);
+      background: linear-gradient(145deg, var(--bg-elevated), #f4f5ff);
       border-radius: 24px;
       border: 1px solid rgba(148, 163, 184, 0.4);
       box-shadow: var(--shadow-soft);
@@ -106,14 +106,14 @@
       width: 34px;
       height: 34px;
       border-radius: 12px;
-      background: radial-gradient(circle at 20% 20%, #bfdbfe, #1d4ed8);
+      background: radial-gradient(circle at 20% 20%, #c9cad0, var(--accent));
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
       font-size: 15px;
       color: #ffffff;
-      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.45);
+      box-shadow: 0 8px 18px rgba(24, 0, 173, 0.45);
     }
 
     .brand-title {
@@ -146,9 +146,9 @@
       font-size: 11px;
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(191, 219, 254, 0.6);
-      border: 1px solid #bfdbfe;
-      color: #1d4ed8;
+      background: #dde0ff;
+      border: 1px solid #c7cafc;
+      color: var(--text-main);
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -179,16 +179,16 @@
 
     .select:hover,
     .button-ghost:hover {
-      background: #eff6ff;
-      border-color: #93c5fd;
-      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.15);
+      background: #ececff;
+      border-color: #b4b7ff;
+      box-shadow: 0 6px 16px rgba(24, 0, 173, 0.15);
       transform: translateY(-1px);
     }
 
     .button-primary {
       border-radius: 999px;
       border: none;
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      background: linear-gradient(135deg, var(--accent), #5a45ff);
       color: #ffffff;
       font-size: 12px;
       padding: 7px 14px;
@@ -196,14 +196,14 @@
       align-items: center;
       gap: 6px;
       cursor: pointer;
-      box-shadow: 0 10px 22px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 10px 22px rgba(24, 0, 173, 0.35);
       transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
     }
 
     .button-primary:hover {
       transform: translateY(-1px);
       filter: brightness(1.03);
-      box-shadow: 0 14px 26px rgba(37, 99, 235, 0.5);
+      box-shadow: 0 14px 26px rgba(24, 0, 173, 0.5);
     }
 
     /* Layout main grid */
@@ -225,7 +225,7 @@
     .card {
       background:
         radial-gradient(circle at top left, var(--accent-soft), transparent 55%),
-        linear-gradient(145deg, var(--bg-card), #eef2ff);
+        linear-gradient(145deg, var(--bg-card), #f4f5ff);
       border-radius: var(--radius-lg);
       border: 1px solid rgba(148, 163, 184, 0.6);
       padding: 14px 14px 15px;
@@ -254,7 +254,7 @@
       width: 18px;
       height: 18px;
       border-radius: 999px;
-      background: rgba(191, 219, 254, 0.6);
+      background: #dde0ff;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -271,9 +271,9 @@
       font-size: 11px;
       padding: 4px 8px;
       border-radius: 999px;
-      background: #e5edff;
-      border: 1px solid #bfdbfe;
-      color: #1d4ed8;
+      background: #dde0ff;
+      border: 1px solid #c7cafc;
+      color: var(--text-main);
       white-space: nowrap;
     }
 
@@ -286,7 +286,7 @@
     }
 
     .kpi-card {
-      background: radial-gradient(circle at top, rgba(191, 219, 254, 0.4), transparent 70%);
+      background: radial-gradient(circle at top, rgba(208, 211, 255, 0.5), transparent 70%);
       border-radius: var(--radius-sm);
       padding: 10px 10px 11px;
       border: 1px solid #d1d5db;
@@ -334,7 +334,7 @@
     .progress-fill {
       height: 100%;
       border-radius: inherit;
-      background: linear-gradient(90deg, #1d4ed8, #22c55e);
+      background: linear-gradient(90deg, var(--accent), #22c55e);
       width: 68%;
     }
 
@@ -350,7 +350,7 @@
       font-size: 10px;
       padding: 4px 8px;
       border-radius: 999px;
-      background: #e5edff;
+      background: #dde0ff;
       border: 1px solid #d1d5db;
       color: var(--text-main);
     }
@@ -396,8 +396,8 @@
       font-size: 10px;
       padding: 3px 7px;
       border-radius: 999px;
-      background: #e5edff;
-      border: 1px solid #bfdbfe;
+      background: #dde0ff;
+      border: 1px solid #c7cafc;
       color: var(--text-main);
       white-space: nowrap;
     }
@@ -426,7 +426,7 @@
       margin-top: 6px;
       height: 90px;
       border-radius: 12px;
-      background: radial-gradient(circle at top, rgba(191, 219, 254, 0.6), transparent 60%);
+      background: radial-gradient(circle at top, rgba(208, 211, 255, 0.7), transparent 60%);
       border: 1px solid #d1d5db;
       padding: 7px 8px;
       display: flex;
@@ -437,7 +437,7 @@
     .bar {
       flex: 1;
       border-radius: 4px 4px 999px 999px;
-      background: linear-gradient(180deg, #93c5fd, rgba(191, 219, 254, 0.15));
+      background: linear-gradient(180deg, #b9bfff, rgba(208, 211, 255, 0.2));
       position: relative;
       overflow: hidden;
     }
@@ -477,7 +477,7 @@
     .chip {
       padding: 4px 8px;
       border-radius: 999px;
-      background: #e5edff;
+      background: #dde0ff;
       border: 1px solid #d1d5db;
       color: var(--text-main);
     }
@@ -539,7 +539,8 @@
       }
 
       .grid-full {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1.\
+1fr);
       }
 
       .kpi-row {
