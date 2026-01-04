@@ -1,29 +1,33 @@
+מעודכן לפי הבקשה
+שפה אנגלית
+כותרת the joint hub
+צבע כללי כהה
+מספרים ירוק חיובי ואדום שלילי
+פוקוס על ביצועי קמפיינים ברשת
+
+```html
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <title>Dashboard מטה הפעולה המשותף</title>
+  <title>the joint hub – Digital Campaign Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      /* צבעי רקע וטקסט מדויקים */
-      --bg: #e6e7e2;            /* רקע אפור בהיר */
-      --bg-elevated: #ffffff;   /* רקע אלמנטים מוגבהים */
-      --bg-card: #f5f5f2;       /* רקע כרטיסים */
-      --accent: #1800ad;        /* כחול מותג */
-      --accent-soft: rgba(24, 0, 173, 0.06);
-
-      --text-main: #1800ad;     /* טקסט כחול */
-      --text-muted: #4b5563;    /* טקסט משני אפור כהה */
-      --border-subtle: #d1d5db; /* גבול עדין */
-
-      --danger: #b91c1c;
-      --success: #15803d;
-      --warning: #b45309;
-
+      --bg: #020617;
+      --bg-elevated: #050816;
+      --bg-card: #0b1120;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.22);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --danger: #ef4444;
+      --success: #22c55e;
+      --warning: #facc15;
       --radius-lg: 18px;
       --radius-sm: 10px;
-      --shadow-soft: 0 14px 30px rgba(15, 23, 42, 0.15);
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.85);
       --transition-fast: 0.18s ease-out;
     }
 
@@ -35,17 +39,17 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
+      background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #000 100%);
       color: var(--text-main);
       min-height: 100vh;
       padding: 24px;
       display: flex;
       justify-content: center;
       align-items: center;
-      direction: rtl;
+      direction: ltr;
     }
 
-    /* עטיפה 16:9 */
+    /* 16:9 frame */
     .frame-16x9 {
       width: 100%;
       max-width: 1320px;
@@ -54,18 +58,17 @@
     .app {
       max-width: 1320px;
       width: 100%;
-      background: linear-gradient(145deg, var(--bg-elevated), #f4f5ff);
+      background: linear-gradient(145deg, rgba(15,23,42,0.98), rgba(15,23,42,0.93));
       border-radius: 24px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
+      border: 1px solid rgba(148, 163, 184, 0.25);
       box-shadow: var(--shadow-soft);
       padding: 20px 22px 24px;
       display: flex;
       flex-direction: column;
       gap: 18px;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(18px);
     }
 
-    /* דסקטופ 16:9 */
     @media (min-width: 1024px) {
       body {
         padding: 16px;
@@ -74,7 +77,7 @@
       .frame-16x9 {
         position: relative;
         margin: 0 auto;
-        padding-top: 56.25%; /* 16:9 */
+        padding-top: 56.25%;
       }
 
       .frame-16x9 .app {
@@ -83,6 +86,15 @@
         height: 100%;
         overflow: auto;
       }
+    }
+
+    /* Positive / negative numbers */
+    .number-positive {
+      color: var(--success);
+    }
+
+    .number-negative {
+      color: var(--danger);
     }
 
     /* Top bar */
@@ -106,14 +118,14 @@
       width: 34px;
       height: 34px;
       border-radius: 12px;
-      background: radial-gradient(circle at 20% 20%, #c9cad0, var(--accent));
+      background: radial-gradient(circle at 20% 20%, #f97316, #4f46e5);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
       font-size: 15px;
-      color: #ffffff;
-      box-shadow: 0 8px 18px rgba(24, 0, 173, 0.45);
+      color: white;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.9);
     }
 
     .brand-title {
@@ -126,7 +138,6 @@
       font-size: 18px;
       font-weight: 600;
       letter-spacing: 0.02em;
-      color: var(--text-main);
     }
 
     .brand-title span {
@@ -146,9 +157,9 @@
       font-size: 11px;
       padding: 6px 10px;
       border-radius: 999px;
-      background: #dde0ff;
-      border: 1px solid #c7cafc;
-      color: var(--text-main);
+      background: rgba(16, 185, 129, 0.18);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      color: #a7f3d0;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -159,14 +170,14 @@
       height: 6px;
       border-radius: 50%;
       background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.28);
     }
 
     .select,
     .button-ghost {
       border-radius: 999px;
       border: 1px solid var(--border-subtle);
-      background: #ffffff;
+      background: rgba(15, 23, 42, 0.85);
       color: var(--text-main);
       font-size: 12px;
       padding: 6px 10px;
@@ -179,31 +190,31 @@
 
     .select:hover,
     .button-ghost:hover {
-      background: #ececff;
-      border-color: #b4b7ff;
-      box-shadow: 0 6px 16px rgba(24, 0, 173, 0.15);
+      background: rgba(30, 64, 175, 0.5);
+      border-color: rgba(129, 140, 248, 0.9);
+      box-shadow: 0 10px 24px rgba(30, 64, 175, 0.55);
       transform: translateY(-1px);
     }
 
     .button-primary {
       border-radius: 999px;
       border: none;
-      background: linear-gradient(135deg, var(--accent), #5a45ff);
-      color: #ffffff;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: white;
       font-size: 12px;
       padding: 7px 14px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       cursor: pointer;
-      box-shadow: 0 10px 22px rgba(24, 0, 173, 0.35);
+      box-shadow: 0 10px 25px rgba(55, 48, 163, 0.7);
       transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
     }
 
     .button-primary:hover {
       transform: translateY(-1px);
-      filter: brightness(1.03);
-      box-shadow: 0 14px 26px rgba(24, 0, 173, 0.5);
+      filter: brightness(1.05);
+      box-shadow: 0 14px 35px rgba(55, 48, 163, 0.9);
     }
 
     /* Layout main grid */
@@ -223,13 +234,12 @@
     }
 
     .card {
-      background:
-        radial-gradient(circle at top left, var(--accent-soft), transparent 55%),
-        linear-gradient(145deg, var(--bg-card), #f4f5ff);
+      background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.18), transparent 55%),
+        linear-gradient(145deg, rgba(15,23,42,0.98), rgba(15,23,42,0.94));
       border-radius: var(--radius-lg);
-      border: 1px solid rgba(148, 163, 184, 0.6);
+      border: 1px solid rgba(31, 41, 55, 0.9);
       padding: 14px 14px 15px;
-      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.95);
     }
 
     .card-header {
@@ -247,19 +257,17 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      color: var(--text-main);
     }
 
     .card-title span.icon {
       width: 18px;
       height: 18px;
       border-radius: 999px;
-      background: #dde0ff;
+      background: rgba(148, 163, 184, 0.12);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-size: 11px;
-      color: var(--text-main);
     }
 
     .card-subtitle {
@@ -271,9 +279,9 @@
       font-size: 11px;
       padding: 4px 8px;
       border-radius: 999px;
-      background: #dde0ff;
-      border: 1px solid #c7cafc;
-      color: var(--text-main);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      color: var(--text-muted);
       white-space: nowrap;
     }
 
@@ -286,10 +294,10 @@
     }
 
     .kpi-card {
-      background: radial-gradient(circle at top, rgba(208, 211, 255, 0.5), transparent 70%);
+      background: radial-gradient(circle at top, rgba(79,70,229,0.25), transparent 70%);
       border-radius: var(--radius-sm);
       padding: 10px 10px 11px;
-      border: 1px solid #d1d5db;
+      border: 1px solid rgba(55, 65, 81, 0.95);
       display: flex;
       flex-direction: column;
       gap: 4px;
@@ -308,7 +316,6 @@
       font-size: 17px;
       font-weight: 600;
       letter-spacing: 0.01em;
-      color: var(--text-main);
     }
 
     .kpi-trend {
@@ -327,14 +334,14 @@
       width: 100%;
       height: 5px;
       border-radius: 999px;
-      background: #e5e7eb;
+      background: rgba(15, 23, 42, 0.95);
       overflow: hidden;
     }
 
     .progress-fill {
       height: 100%;
       border-radius: inherit;
-      background: linear-gradient(90deg, var(--accent), #22c55e);
+      background: linear-gradient(90deg, #4f46e5, #22c55e);
       width: 68%;
     }
 
@@ -350,9 +357,9 @@
       font-size: 10px;
       padding: 4px 8px;
       border-radius: 999px;
-      background: #dde0ff;
-      border: 1px solid #d1d5db;
-      color: var(--text-main);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      color: var(--text-muted);
     }
 
     .list {
@@ -376,33 +383,21 @@
       gap: 2px;
     }
 
-    .list-title {
-      font-size: 12px;
-      color: var(--text-main);
-    }
-
-    .list-meta {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .list-metric {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-main);
-    }
+    .list-title { font-size: 12px; }
+    .list-meta { font-size: 11px; color: var(--text-muted); }
+    .list-metric { font-size: 13px; font-weight: 500; }
 
     .tag-soft {
       font-size: 10px;
       padding: 3px 7px;
       border-radius: 999px;
-      background: #dde0ff;
-      border: 1px solid #c7cafc;
-      color: var(--text-main);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      color: var(--text-muted);
       white-space: nowrap;
     }
 
-    /* Digital */
+    /* Digital chart */
     .pill-legend {
       display: flex;
       flex-wrap: wrap;
@@ -414,20 +409,20 @@
 
     .pill-legend span::before {
       content: "●";
-      margin-left: 4px;
+      margin-right: 4px;
       font-size: 9px;
     }
 
-    .pill-legend .insta::before { color: #e11d48; }
-    .pill-legend .tiktok::before { color: #22c55e; }
-    .pill-legend .fb::before { color: #0ea5e9; }
+    .pill-legend .meta::before { color: #22c55e; }
+    .pill-legend .tiktok::before { color: #a855f7; }
+    .pill-legend .youtube::before { color: #ef4444; }
 
     .mini-chart {
       margin-top: 6px;
       height: 90px;
       border-radius: 12px;
-      background: radial-gradient(circle at top, rgba(208, 211, 255, 0.7), transparent 60%);
-      border: 1px solid #d1d5db;
+      background: radial-gradient(circle at top, rgba(79, 70, 229, 0.35), transparent 60%);
+      border: 1px solid rgba(31, 41, 55, 0.95);
       padding: 7px 8px;
       display: flex;
       align-items: flex-end;
@@ -437,7 +432,7 @@
     .bar {
       flex: 1;
       border-radius: 4px 4px 999px 999px;
-      background: linear-gradient(180deg, #b9bfff, rgba(208, 211, 255, 0.2));
+      background: linear-gradient(180deg, rgba(129, 140, 248, 0.98), rgba(30, 64, 175, 0.05));
       position: relative;
       overflow: hidden;
     }
@@ -447,7 +442,7 @@
       position: absolute;
       inset: auto 0 0 0;
       height: 28%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), transparent);
+      background: linear-gradient(180deg, rgba(248, 250, 252, 0.6), transparent);
       mix-blend-mode: screen;
     }
 
@@ -477,9 +472,8 @@
     .chip {
       padding: 4px 8px;
       border-radius: 999px;
-      background: #dde0ff;
-      border: 1px solid #d1d5db;
-      color: var(--text-main);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.95);
     }
 
     .stat-grid-2 {
@@ -493,15 +487,15 @@
       font-size: 11px;
       padding: 7px 8px;
       border-radius: 12px;
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.95);
       display: flex;
       flex-direction: column;
       gap: 2px;
     }
 
     .stat-label { color: var(--text-muted); }
-    .stat-value { font-size: 14px; font-weight: 500; color: var(--text-main); }
+    .stat-value { font-size: 14px; font-weight: 500; }
 
     /* Insights */
     .insights-list {
@@ -520,7 +514,6 @@
     .insight-icon {
       font-size: 14px;
       margin-top: 1px;
-      color: var(--text-main);
     }
 
     .insight-text {
@@ -529,7 +522,7 @@
       gap: 2px;
     }
 
-    .insight-title { font-weight: 500; font-size: 12px; color: var(--text-main); }
+    .insight-title { font-weight: 500; font-size: 12px; }
     .insight-meta { font-size: 11px; color: var(--text-muted); }
 
     /* Responsive */
@@ -580,25 +573,25 @@
       <!-- Top bar -->
       <div class="top-bar">
         <div class="brand">
-          <div class="brand-icon">ID</div>
+          <div class="brand-icon">JH</div>
           <div class="brand-title">
-            <h1>Dashboard מטה הפעולה המשותף</h1>
-            <span>שטח · דיגיטל · תקשורת · מרצ'נדייז · אימפקט</span>
+            <h1>the joint hub</h1>
+            <span>Unified view of digital campaign performance</span>
           </div>
         </div>
         <div class="controls">
           <div class="tag-pill">
             <span class="tag-dot"></span>
-            ניטור קמפיין בזמן אמת
+            Live monitoring of online campaigns
           </div>
           <button class="select">
-            קמפיין: מטה משפחות החטופים ▼
+            Campaign set: Hostages global network ▼
           </button>
           <button class="select">
-            7 ימים אחרונים ▼
+            Last 7 days ▼
           </button>
           <button class="button-primary">
-            ⇪ יצוא צילום מצב
+            ⇪ Export current snapshot
           </button>
         </div>
       </div>
@@ -609,53 +602,53 @@
           <div>
             <div class="card-title">
               <span class="icon">◎</span>
-              סטטוס קמפיין – השבוע
+              Campaign status – this week
             </div>
             <div class="card-subtitle">
-              מבט משולב על שטח, דיגיטל, תקשורת והמרה לפעולה.
+              High level view of reach, engagement, conversions and spend efficiency across digital channels.
             </div>
           </div>
-          <span class="badge-soft">עודכן לפני 3 דקות</span>
+          <span class="badge-soft">Updated 3 minutes ago</span>
         </div>
         <div class="kpi-row">
           <div class="kpi-card">
             <div class="kpi-label">
-              חשיפה כוללת
+              Total online reach
               <span class="kpi-trend trend-up">↑ 18%</span>
             </div>
-            <div class="kpi-value">482,000</div>
+            <div class="kpi-value number-positive">482,000</div>
             <div class="progress-track">
               <div class="progress-fill" style="width:72%"></div>
             </div>
           </div>
           <div class="kpi-card">
             <div class="kpi-label">
-              מתנדבים פעילים
+              Active campaigns
               <span class="kpi-trend trend-up">↑ 9%</span>
             </div>
-            <div class="kpi-value">136</div>
+            <div class="kpi-value number-positive">23</div>
             <div class="progress-track">
               <div class="progress-fill" style="width:64%"></div>
             </div>
           </div>
           <div class="kpi-card">
             <div class="kpi-label">
-              אזכורים בתקשורת
-              <span class="kpi-trend trend-neutral">• יציב</span>
+              Conversions (sign ups, donations)
+              <span class="kpi-trend trend-up">↑ 14%</span>
             </div>
-            <div class="kpi-value">18</div>
+            <div class="kpi-value number-positive">3,200</div>
             <div class="progress-track">
-              <div class="progress-fill" style="width:50%"></div>
+              <div class="progress-fill" style="width:78%"></div>
             </div>
           </div>
           <div class="kpi-card">
             <div class="kpi-label">
-              מהלכים משמעותיים
-              <span class="kpi-trend trend-up">↑ אימפקט</span>
+              Drop in engagement
+              <span class="kpi-trend trend-down">↓ 7%</span>
             </div>
-            <div class="kpi-value">4</div>
+            <div class="kpi-value number-negative">7%</div>
             <div class="progress-track">
-              <div class="progress-fill" style="width:80%"></div>
+              <div class="progress-fill" style="width:40%"></div>
             </div>
           </div>
         </div>
@@ -663,77 +656,78 @@
 
       <!-- Main grid -->
       <div class="grid-main">
-        <!-- Field activity -->
+        <!-- Channel performance -->
         <div class="card">
           <div class="card-header">
             <div>
               <div class="card-title">
-                <span class="icon">🏙</span>
-                פעילות שטח
+                <span class="icon">📊</span>
+                Performance by channel
               </div>
               <div class="card-subtitle">
-                אירועים, משתתפים ונוכחות פיזית.
+                Key metrics for the main platforms running the campaigns.
               </div>
             </div>
-            <span class="badge-soft">7 אירועים · 2,350 משתתפים</span>
+            <span class="badge-soft">Meta · TikTok · YouTube · Search</span>
           </div>
 
           <div class="pill-row">
-            <span class="pill">הפגנות: 2</span>
-            <span class="pill">קמפוסים: 3</span>
-            <span class="pill">דוכנים: 2</span>
+            <span class="pill">Meta paid · always on</span>
+            <span class="pill">TikTok creators · bursts</span>
+            <span class="pill">YouTube preroll · hero content</span>
+            <span class="pill">Search · intent based</span>
           </div>
 
           <div class="list">
             <div class="list-item">
               <div class="list-item-main">
-                <div class="list-title">ניו יורק – הפגנה מרכזית</div>
-                <div class="list-meta">1,200 משתתפים · טיימס סקוור · 3 שעות</div>
+                <div class="list-title">Meta campaigns – global diaspora audiences</div>
+                <div class="list-meta">2.3M impressions · 2.8% CTR · focus on update videos</div>
               </div>
-              <div class="list-metric">
-                <span class="tag-soft">אימפקט גבוה</span>
-              </div>
-            </div>
-            <div class="list-item">
-              <div class="list-item-main">
-                <div class="list-title">לונדון – עצרת קהילה</div>
-                <div class="list-meta">600 משתתפים · כיכר טראפלגר</div>
-              </div>
-              <div class="list-metric">
-                <span class="tag-soft">סיקור תקשורתי</span>
+              <div class="list-metric number-positive">
+                Strong reach
               </div>
             </div>
             <div class="list-item">
               <div class="list-item-main">
-                <div class="list-title">פעילות בקמפוסים – 3 מוסדות</div>
-                <div class="list-meta">550 אינטראקציות · 310 פרטים חדשים</div>
+                <div class="list-title">TikTok – organic and paid boosts</div>
+                <div class="list-meta">740k views · 8.4% engagement rate · creator led content</div>
               </div>
-              <div class="list-metric">
-                <span class="tag-soft">משפך מתנדבים</span>
+              <div class="list-metric number-positive">
+                High engagement
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-main">
+                <div class="list-title">Search campaigns – petitions and donations</div>
+                <div class="list-meta">6.2k clicks · 4.3% CVR · branded and generic terms</div>
+              </div>
+              <div class="list-metric number-negative">
+                CPA trending up
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Digital -->
+        <!-- Daily performance chart -->
         <div class="card">
           <div class="card-header">
             <div>
               <div class="card-title">
-                <span class="icon">📱</span>
-                ביצועי דיגיטל
+                <span class="icon">📅</span>
+                Daily performance – last 5 days
               </div>
               <div class="card-subtitle">
-                חשיפה, מעורבות ותנועה לפעולה לפי פלטפורמה.
+                Aggregate impressions, clicks and conversions across all digital channels.
               </div>
             </div>
-            <span class="badge-soft">רב־פלטפורמי</span>
+            <span class="badge-soft">Cross platform</span>
           </div>
 
           <div class="pill-legend">
-            <span class="insta">אינסטגרם</span>
-            <span class="tiktok">טיקטוק</span>
-            <span class="fb">פייסבוק</span>
+            <span class="meta">Meta</span>
+            <span class="tiktok">TikTok</span>
+            <span class="youtube">YouTube</span>
           </div>
 
           <div class="mini-chart">
@@ -744,99 +738,99 @@
             <div class="bar"></div>
           </div>
           <div class="mini-chart-x">
-            <span>א'</span><span>ב'</span><span>ג'</span><span>ד'</span><span>ה'</span>
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span>
           </div>
 
           <div class="stat-grid-2" style="margin-top:10px;">
             <div class="stat-box">
-              <div class="stat-label">חשיפה שבועית</div>
-              <div class="stat-value">450k</div>
-              <div class="stat-label">↑ 22% מול שבוע קודם</div>
+              <div class="stat-label">Weekly online reach</div>
+              <div class="stat-value number-positive">450k</div>
+              <div class="stat-label number-positive">↑ 22% vs previous week</div>
             </div>
             <div class="stat-box">
-              <div class="stat-label">קליקים לפעולה</div>
-              <div class="stat-value">3,200</div>
-              <div class="stat-label">הרשמה · תרומה · שיתוף</div>
+              <div class="stat-label">Cost per result</div>
+              <div class="stat-value number-negative">$3.42</div>
+              <div class="stat-label number-negative">↑ 11% vs target</div>
             </div>
           </div>
         </div>
 
-        <!-- Media & merch + Impact & team -->
+        <!-- Creatives & messages + Insights -->
         <div class="grid-full">
-          <!-- Media & merch -->
+          <!-- Creatives and messaging -->
           <div class="card">
             <div class="card-header">
               <div>
                 <div class="card-title">
-                  <span class="icon">📰</span>
-                  תקשורת ומרצ'נדייז
+                  <span class="icon">🎬</span>
+                  Creatives and key messages
                 </div>
                 <div class="card-subtitle">
-                  נראטיב בתקשורת ומרצ'נדייז כמנוע קשר.
+                  What is working and what needs to be fixed in the online narrative.
                 </div>
               </div>
-              <span class="badge-soft">18 אזכורים · 3k פריטים</span>
+              <span class="badge-soft">A/B tests · formats · sentiment</span>
             </div>
 
             <div class="chips-row" style="margin-bottom:8px;">
-              <span class="chip">טלוויזיה: 3</span>
-              <span class="chip">רדיו: 4</span>
-              <span class="chip">אתרי חדשות: 9</span>
-              <span class="chip">פודקאסטים: 2</span>
+              <span class="chip">Short vertical video</span>
+              <span class="chip">Static carousels</span>
+              <span class="chip">Long form YouTube</span>
+              <span class="chip">Search copy</span>
             </div>
 
             <div class="stat-grid-2">
               <div class="stat-box">
-                <div class="stat-label">סיקור חיובי / ניטרלי</div>
-                <div class="stat-value">12 / 5</div>
-                <div class="stat-label">אייטם שלילי אחד במעקב</div>
+                <div class="stat-label">Video completion rate</div>
+                <div class="stat-value number-positive">64%</div>
+                <div class="stat-label">Best for personal testimonies</div>
               </div>
               <div class="stat-box">
-                <div class="stat-label">חזרת מסר ליבה</div>
-                <div class="stat-value">78%</div>
-                <div class="stat-label">"המשפחות דורשות אחריות"</div>
+                <div class="stat-label">Negative sentiment items</div>
+                <div class="stat-value number-negative">1</div>
+                <div class="stat-label">Under active moderation and response</div>
               </div>
             </div>
 
             <div style="margin-top:10px; font-size:11px; color:var(--text-muted);">
-              מרצ'נדייז כמשפך קשר (השבוע):
+              Creative funnel this week:
             </div>
             <div class="stat-grid-2" style="margin-top:6px;">
               <div class="stat-box">
-                <div class="stat-label">פריטים שחולקו</div>
-                <div class="stat-value">1,620</div>
-                <div class="stat-label">חולצות, צמידים, דגלים</div>
+                <div class="stat-label">Assets in rotation</div>
+                <div class="stat-value number-positive">42</div>
+                <div class="stat-label">Video, static and stories</div>
               </div>
               <div class="stat-box">
-                <div class="stat-label">אנשים שנכנסו למעגל</div>
-                <div class="stat-value">260</div>
-                <div class="stat-label">45 הפכו למתנדבי ליבה</div>
+                <div class="stat-label">Underperforming variants</div>
+                <div class="stat-value number-negative">7</div>
+                <div class="stat-label">Marked for pause or rewrite</div>
               </div>
             </div>
           </div>
 
-          <!-- Impact & team (insights) -->
+          <!-- Insights and next steps -->
           <div class="card">
             <div class="card-header">
               <div>
                 <div class="card-title">
                   <span class="icon">⚡</span>
-                  תובנות והמלצות המשך
+                  Insights and next steps
                 </div>
                 <div class="card-subtitle">
-                  תובנות אוטומטיות על בסיס נתוני השטח, הדיגיטל והתקשורת.
+                  Automated insights based on digital performance data only.
                 </div>
               </div>
-              <span class="badge-soft">לשימוש הנהלת הקמפיין</span>
+              <span class="badge-soft">For campaign leadership</span>
             </div>
 
             <div class="insights-list">
               <div class="insight">
                 <div class="insight-icon">➀</div>
                 <div class="insight-text">
-                  <div class="insight-title">חיזוק נוכחות בקהילות אירופה</div>
+                  <div class="insight-title">Strengthen creator led content</div>
                   <div class="insight-meta">
-                    מעורבות דיגיטלית גבוהה מברלין ואמסטרדם, כמעט ללא אירועי שטח השבוע.
+                    TikTok creator content drives <span class="number-positive">65%+</span> of total engagement but only <span class="number-positive">28%</span> of spend.
                   </div>
                 </div>
               </div>
@@ -844,9 +838,9 @@
               <div class="insight">
                 <div class="insight-icon">➁</div>
                 <div class="insight-text">
-                  <div class="insight-title">שכפול פורמט "עדות מהשטח"</div>
+                  <div class="insight-title">Fix drop in mid funnel engagement</div>
                   <div class="insight-meta">
-                    סרטוני וידאו קצרים עם עדויות אישיות אחראים ל־65% מהמעורבות באינסטגרם וטיקטוק.
+                    Link click to landing page scroll depth is down by <span class="number-negative">9%</span>; main issue on long form pages.
                   </div>
                 </div>
               </div>
@@ -854,9 +848,9 @@
               <div class="insight">
                 <div class="insight-icon">➂</div>
                 <div class="insight-text">
-                  <div class="insight-title">המרת מרצ'נדייז למתנדבי ליבה</div>
+                  <div class="insight-title">Retarget high intent visitors</div>
                   <div class="insight-meta">
-                    מומלץ לייצר מהלך המשך ייעודי ל־260 אנשי קשר שנאספו דרך מרצ'נדייז – פוטנציאל גבוה לגיוס פעילים.
+                    Custom audiences from petition and donation pages show <span class="number-positive">3.1×</span> higher conversion rate in remarketing.
                   </div>
                 </div>
               </div>
@@ -864,9 +858,9 @@
               <div class="insight">
                 <div class="insight-icon">➃</div>
                 <div class="insight-text">
-                  <div class="insight-title">יישור מסרים בין כל הזירות</div>
+                  <div class="insight-title">Align weekly digital message</div>
                   <div class="insight-meta">
-                    לוודא שמסר שבועי אחד עובר לשטח, לדוברים ולדיגיטל – נראטיב אחד, מופעים שונים.
+                    Define one key message for the week and mirror it across Meta, TikTok, YouTube and email calls to action.
                   </div>
                 </div>
               </div>
@@ -874,51 +868,51 @@
           </div>
         </div>
 
-        <!-- Team & volunteers card -->
+        <!-- Audience and funnel -->
         <div class="card" style="grid-column: 1 / -1;">
           <div class="card-header">
             <div>
               <div class="card-title">
                 <span class="icon">👥</span>
-                צוות, מתנדבים ומשאבים
+                Audience and digital funnel
               </div>
               <div class="card-subtitle">
-                מבט על המודל ההיברידי – אנשי מקצוע ומתנדבים.
+                How online audiences move from reach to concrete actions.
               </div>
             </div>
-            <span class="badge-soft">42 מתנדבי ליבה · 136 פעילים השבוע</span>
+            <span class="badge-soft">Top of funnel to core supporters</span>
           </div>
 
           <div class="stat-grid-2">
             <div class="stat-box">
-              <div class="stat-label">אנשי מקצוע בליבת הקמפיין</div>
-              <div class="stat-value">7</div>
-              <div class="stat-label">קריאייטיב, דיגיטל, מדיה, שטח</div>
+              <div class="stat-label">Engaged unique users</div>
+              <div class="stat-value number-positive">136k</div>
+              <div class="stat-label">Viewed or interacted with content this week</div>
             </div>
             <div class="stat-box">
-              <div class="stat-label">מתנדבים פעילים השבוע</div>
-              <div class="stat-value">136</div>
-              <div class="stat-label">42 מתנדבים קבועים</div>
+              <div class="stat-label">Core supporter segment</div>
+              <div class="stat-value number-positive">42k</div>
+              <div class="stat-label">Repeated interactions and actions</div>
             </div>
           </div>
 
           <div class="list" style="margin-top:10px;">
             <div class="list-item">
               <div class="list-item-main">
-                <div class="list-title">ימי שיא פעילות</div>
-                <div class="list-meta">ראשון, שלישי, חמישי – עומס גבוה בשטח ובדיגיטל</div>
+                <div class="list-title">Peak activity days</div>
+                <div class="list-meta">Sunday, Tuesday, Thursday – heavy traffic and response rates</div>
               </div>
               <div class="list-metric">
-                <span class="tag-soft">לתגבר צוות</span>
+                <span class="tag-soft">Increase budgets on peaks</span>
               </div>
             </div>
             <div class="list-item">
               <div class="list-item-main">
-                <div class="list-title">פערי כיסוי</div>
-                <div class="list-meta">אירופה וצפון אמריקה – פעילות דיגיטלית קיימת, מעט מתנדבים בשטח</div>
+                <div class="list-title">Coverage gaps</div>
+                <div class="list-meta">Late night North America and early Europe slots under served</div>
               </div>
               <div class="list-metric">
-                <span class="tag-soft">איתור רכזים מקומיים</span>
+                <span class="tag-soft">Shift spend to fill gaps</span>
               </div>
             </div>
           </div>
@@ -929,3 +923,4 @@
   </div> <!-- /frame-16x9 -->
 </body>
 </html>
+```
