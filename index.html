@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <title>THE JOINT HUB – Digital Campaign Dashboard</title>
+  <title>The Frame – shared intelligence hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
@@ -19,7 +19,7 @@
       --warning: #facc15;
       --radius-lg: 18px;
       --radius-sm: 10px;
-      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.85);
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.7);
       --transition-fast: 0.18s ease-out;
     }
 
@@ -41,6 +41,10 @@
       direction: ltr;
     }
 
+    /* useful helpers */
+    .number-positive { color: var(--success); }
+    .number-negative { color: var(--danger); }
+
     /* 16:9 frame */
     .frame-16x9 {
       width: 100%;
@@ -50,7 +54,7 @@
     .app {
       max-width: 1320px;
       width: 100%;
-      background: linear-gradient(145deg, rgba(15,23,42,0.98), rgba(15,23,42,0.93));
+      background: linear-gradient(145deg, rgba(15,23,42,0.96), rgba(15,23,42,0.9));
       border-radius: 24px;
       border: 1px solid rgba(148, 163, 184, 0.25);
       box-shadow: var(--shadow-soft);
@@ -58,7 +62,7 @@
       display: flex;
       flex-direction: column;
       gap: 18px;
-      backdrop-filter: blur(18px);
+      backdrop-filter: blur(16px);
     }
 
     @media (min-width: 1024px) {
@@ -80,16 +84,7 @@
       }
     }
 
-    /* Positive / negative numbers */
-    .number-positive {
-      color: var(--success);
-    }
-
-    .number-negative {
-      color: var(--danger);
-    }
-
-    /* Top bar */
+    /* top bar */
     .top-bar {
       display: flex;
       align-items: center;
@@ -210,10 +205,10 @@
       box-shadow: 0 14px 35px rgba(55, 48, 163, 0.9);
     }
 
-    /* Layout main grid */
+    /* layout */
     .grid-main {
       display: grid;
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.6fr);
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.9fr);
       grid-template-rows: auto auto auto;
       gap: 16px;
       margin-top: 4px;
@@ -222,17 +217,18 @@
     .grid-full {
       grid-column: 1 / -1;
       display: grid;
-      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.6fr);
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
       gap: 16px;
     }
 
     .card {
-      background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.18), transparent 55%),
+      background:
+        radial-gradient(circle at top left, var(--accent-soft), transparent 55%),
         linear-gradient(145deg, rgba(15,23,42,0.98), rgba(15,23,42,0.94));
       border-radius: var(--radius-lg);
       border: 1px solid rgba(31, 41, 55, 0.9);
       padding: 14px 14px 15px;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.95);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.8);
     }
 
     .card-header {
@@ -338,7 +334,7 @@
       width: 68%;
     }
 
-    /* Pills & lists */
+    /* pills and lists */
     .pill-row {
       display: flex;
       flex-wrap: wrap;
@@ -390,7 +386,7 @@
       white-space: nowrap;
     }
 
-    /* Digital chart */
+    /* mini bar chart */
     .pill-legend {
       display: flex;
       flex-wrap: wrap;
@@ -453,7 +449,184 @@
       justify-content: space-between;
     }
 
-    /* Stats */
+    /* line chart (trend) */
+    .line-chart {
+      margin-top: 8px;
+      border-radius: 14px;
+      border: 1px solid rgba(31,41,55,0.9);
+      background: radial-gradient(circle at top, rgba(79,70,229,0.35), transparent 60%);
+      padding: 6px 8px 4px;
+    }
+
+    .line-chart svg {
+      width: 100%;
+      height: 90px;
+      display: block;
+    }
+
+    .line-grid-line {
+      stroke: rgba(55,65,81,0.7);
+      stroke-width: 0.2;
+    }
+
+    .line-path {
+      fill: url(#lineGradient);
+      stroke: rgba(129,140,248,0.9);
+      stroke-width: 1.4;
+    }
+
+    .line-circle {
+      fill: #22c55e;
+      stroke: #0b1120;
+      stroke-width: 0.8;
+    }
+
+    .line-circle.negative {
+      fill: #ef4444;
+    }
+
+    .line-chart-xaxis {
+      margin-top: 4px;
+      font-size: 10px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* donut chart */
+    .donut-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .donut {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: conic-gradient(
+        #22c55e 0 46%,
+        #eab308 46% 68%,
+        #38bdf8 68% 84%,
+        #ef4444 84% 100%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 26px rgba(15,23,42,0.8);
+    }
+
+    .donut-inner {
+      width: 58%;
+      height: 58%;
+      border-radius: 50%;
+      background: radial-gradient(circle at top, #111827, #020617);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      gap: 2px;
+    }
+
+    .donut-inner span:first-child {
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .donut-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .donut-legend-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .donut-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .donut-label::before {
+      content: "●";
+      font-size: 9px;
+    }
+
+    .donut-label.meta::before { color: #22c55e; }
+    .donut-label.tiktok::before { color: #eab308; }
+    .donut-label.youtube::before { color: #38bdf8; }
+    .donut-label.search::before { color: #ef4444; }
+
+    /* PPC table */
+    .ppc-table-wrapper {
+      margin-top: 6px;
+      border-radius: 14px;
+      border: 1px solid rgba(31,41,55,0.9);
+      background: radial-gradient(circle at top, rgba(15,23,42,0.9), rgba(15,23,42,0.95));
+      overflow: hidden;
+    }
+
+    .ppc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+    }
+
+    .ppc-table thead {
+      background: rgba(15,23,42,0.98);
+    }
+
+    .ppc-table th,
+    .ppc-table td {
+      padding: 6px 8px;
+      text-align: left;
+      border-bottom: 1px solid rgba(31,41,55,0.95);
+      white-space: nowrap;
+    }
+
+    .ppc-table th {
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .ppc-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .ppc-status-pill {
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid;
+    }
+
+    .ppc-status-pill.good {
+      border-color: rgba(34,197,94,0.9);
+      color: #bbf7d0;
+      background: rgba(22,163,74,0.16);
+    }
+
+    .ppc-status-pill.warn {
+      border-color: rgba(234,179,8,0.9);
+      color: #facc15;
+      background: rgba(202,138,4,0.16);
+    }
+
+    .ppc-status-pill.bad {
+      border-color: rgba(239,68,68,0.9);
+      color: #fecaca;
+      background: rgba(185,28,28,0.18);
+    }
+
+    /* chips and stats */
     .chips-row {
       display: flex;
       gap: 6px;
@@ -490,7 +663,7 @@
     .stat-label { color: var(--text-muted); }
     .stat-value { font-size: 14px; font-weight: 500; }
 
-    /* Insights */
+    /* insights */
     .insights-list {
       font-size: 12px;
       display: flex;
@@ -537,47 +710,43 @@
 
     .us-map {
       position: relative;
-      height: 160px;
-      border-radius: 16px;
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      background:
-        radial-gradient(ellipse at 30% 60%, rgba(34,197,94,0.25), transparent 65%),
-        radial-gradient(ellipse at 70% 40%, rgba(239,68,68,0.24), transparent 65%),
-        radial-gradient(circle at 50% 50%, rgba(15,23,42,0.95), rgba(15,23,42,1));
+      width: 100%;
+      aspect-ratio: 16 / 4;
+      border-radius: 22px;
       overflow: hidden;
+      border: 1px solid rgba(148,163,184,0.45);
+      background:
+        radial-gradient(circle at 20% 50%, rgba(34,197,94,0.45), transparent 65%),
+        radial-gradient(circle at 80% 50%, rgba(239,68,68,0.4), transparent 65%),
+        linear-gradient(120deg, #020617, #020617);
     }
 
     .us-map::before {
       content: "";
       position: absolute;
-      inset: 16% 18%;
+      inset: 12% 3%;
       border-radius: 999px;
-      border: 1px dashed rgba(148,163,184,0.3);
-      background:
-        radial-gradient(ellipse at 30% 45%, rgba(34,197,94,0.32), transparent 55%),
-        radial-gradient(ellipse at 75% 55%, rgba(239,68,68,0.32), transparent 55%),
-        radial-gradient(ellipse at 55% 70%, rgba(34,197,94,0.22), transparent 60%);
-      opacity: 0.9;
+      border: 1px dashed rgba(148,163,184,0.35);
     }
 
     .us-region {
       position: absolute;
       font-size: 10px;
-      padding: 3px 7px;
+      padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(15, 23, 42, 0.96);
       border: 1px solid;
-      z-index: 1;
       white-space: nowrap;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.45);
     }
 
     .region-positive {
-      border-color: rgba(34,197,94,0.7);
+      border-color: rgba(34,197,94,0.9);
       color: #bbf7d0;
     }
 
     .region-negative {
-      border-color: rgba(239,68,68,0.8);
+      border-color: rgba(239,68,68,0.95);
       color: #fecaca;
     }
 
@@ -596,15 +765,42 @@
       font-size: 9px;
     }
 
-    .us-map-legend .legend-pos::before {
-      color: #22c55e;
+    .us-map-legend .legend-pos::before { color: #22c55e; }
+    .us-map-legend .legend-neg::before { color: #ef4444; }
+
+    /* state summary table */
+    .state-table-wrapper {
+      margin-top: 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(31,41,55,0.9);
+      background: radial-gradient(circle at top, rgba(15,23,42,0.9), rgba(15,23,42,0.95));
+      overflow: hidden;
     }
 
-    .us-map-legend .legend-neg::before {
-      color: #ef4444;
+    .state-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
     }
 
-    /* Responsive */
+    .state-table th,
+    .state-table td {
+      padding: 6px 8px;
+      text-align: left;
+      border-bottom: 1px solid rgba(31,41,55,0.95);
+      white-space: nowrap;
+    }
+
+    .state-table thead {
+      background: rgba(15,23,42,0.98);
+      color: var(--text-muted);
+    }
+
+    .state-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* responsive tweaks */
     @media (max-width: 1024px) {
       .grid-main {
         grid-template-columns: minmax(0, 1fr);
@@ -649,13 +845,13 @@
 <body>
   <div class="frame-16x9">
     <div class="app">
-      <!-- Top bar -->
+      <!-- top bar -->
       <div class="top-bar">
         <div class="brand">
-          <div class="brand-icon">JH</div>
+          <div class="brand-icon">TF</div>
           <div class="brand-title">
-            <h1>THE JOINT HUB</h1>
-            <span>Unified view of digital campaign performance</span>
+            <h1>The Frame</h1>
+            <span>Shared intelligence hub for digital campaigns</span>
           </div>
         </div>
         <div class="controls">
@@ -664,7 +860,7 @@
             Live monitoring of online campaigns
           </div>
           <button class="select">
-            Campaign set: Hostages global network ▼
+            Campaign cluster: Hostages support network ▼
           </button>
           <button class="select">
             Last 7 days ▼
@@ -684,7 +880,7 @@
               Campaign status this week
             </div>
             <div class="card-subtitle">
-              Reach, engagement, conversions and efficiency across all digital channels.
+              Reach, spend, conversions and efficiency across all digital channels.
             </div>
           </div>
           <span class="badge-soft">Updated 3 minutes ago</span>
@@ -705,15 +901,15 @@
           </div>
           <div class="kpi-card">
             <div class="kpi-label">
-              Active campaigns
-              <span class="kpi-trend trend-up">↑ 9%</span>
+              Media spend
+              <span class="kpi-trend trend-up">↑ 5%</span>
             </div>
-            <div class="kpi-value number-positive">23</div>
+            <div class="kpi-value number-negative">$41,200</div>
             <div class="progress-track">
-              <div class="progress-fill" style="width:64%"></div>
+              <div class="progress-fill" style="width:58%"></div>
             </div>
             <div class="kpi-trend">
-              Avg CPM <span class="number-positive">$4.10</span>
+              CPC <span class="number-positive">$0.48</span>
             </div>
           </div>
           <div class="kpi-card">
@@ -739,15 +935,15 @@
               <div class="progress-fill" style="width:48%"></div>
             </div>
             <div class="kpi-trend">
-              CTR loss mid funnel <span class="number-negative">−0.7 pp</span>
+              Mid funnel CTR loss <span class="number-negative">−0.7 pp</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Main grid -->
+      <!-- main grid -->
       <div class="grid-main">
-        <!-- Channel performance -->
+        <!-- channel performance card -->
         <div class="card">
           <div class="card-header">
             <div>
@@ -756,185 +952,226 @@
                 Performance by channel
               </div>
               <div class="card-subtitle">
-                Core PPC metrics for the main platforms.
+                Core PPC metrics by platform and objective.
               </div>
             </div>
             <span class="badge-soft">Meta · TikTok · YouTube · Search</span>
           </div>
 
           <div class="pill-row">
-            <span class="pill">Meta paid always on</span>
-            <span class="pill">TikTok creators bursts</span>
-            <span class="pill">YouTube preroll hero</span>
-            <span class="pill">Search intent based</span>
+            <span class="pill">Meta paid conversion</span>
+            <span class="pill">TikTok creators engagement</span>
+            <span class="pill">YouTube hero video</span>
+            <span class="pill">Search petitions and donations</span>
           </div>
 
           <div class="list">
             <div class="list-item">
               <div class="list-item-main">
-                <div class="list-title">Meta campaigns global diaspora audiences</div>
+                <div class="list-title">Meta campaigns – New York and California focus</div>
                 <div class="list-meta">
-                  <span class="number-positive">2.3M</span> impressions ·
-                  CTR <span class="number-positive">2.8%</span> ·
-                  CPC <span class="number-positive">$0.42</span>
+                  <span class="number-positive">2.3M</span> impressions
+                  · CTR <span class="number-positive">3.1%</span>
+                  · CPC <span class="number-positive">$0.39</span>
                 </div>
               </div>
               <div class="list-metric number-positive">
-                Strong reach and cost
+                Efficient reach and cost
               </div>
             </div>
+
             <div class="list-item">
               <div class="list-item-main">
-                <div class="list-title">TikTok organic and paid boosts</div>
+                <div class="list-title">TikTok – creators in New York, Florida, Texas</div>
                 <div class="list-meta">
-                  <span class="number-positive">740k</span> views ·
-                  engagement rate <span class="number-positive">8.4%</span> ·
-                  save rate <span class="number-positive">19%</span>
+                  <span class="number-positive">740k</span> views
+                  · engagement <span class="number-positive">8.4%</span>
+                  · save rate <span class="number-positive">19%</span>
                 </div>
               </div>
               <div class="list-metric number-positive">
                 Top engagement driver
               </div>
             </div>
+
             <div class="list-item">
               <div class="list-item-main">
-                <div class="list-title">Search campaigns petitions and donations</div>
+                <div class="list-title">YouTube preroll – national audiences</div>
                 <div class="list-meta">
-                  <span class="number-positive">6.2k</span> clicks ·
-                  CVR <span class="number-positive">4.3%</span> ·
-                  CPA <span class="number-negative">$5.10</span>
+                  <span class="number-positive">410k</span> impressions
+                  · view rate <span class="number-positive">32%</span>
+                  · CPV <span class="number-positive">$0.07</span>
+                </div>
+              </div>
+              <div class="list-metric number-positive">
+                Stable performance
+              </div>
+            </div>
+
+            <div class="list-item">
+              <div class="list-item-main">
+                <div class="list-title">Search – Michigan and campus heavy states</div>
+                <div class="list-meta">
+                  <span class="number-positive">6.2k</span> clicks
+                  · CVR <span class="number-positive">4.3%</span>
+                  · CPA <span class="number-negative">$5.10</span>
                 </div>
               </div>
               <div class="list-metric number-negative">
-                CPA trending up needs work
+                CPA above target needs work
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Daily performance chart -->
+        <!-- line chart card -->
         <div class="card">
           <div class="card-header">
             <div>
               <div class="card-title">
-                <span class="icon">📅</span>
-                Daily performance last 5 days
+                <span class="icon">📈</span>
+                Spend and conversions trend
               </div>
               <div class="card-subtitle">
-                Aggregate impressions, clicks and conversions across all channels.
+                Daily media spend versus conversions last 14 days.
               </div>
             </div>
-            <span class="badge-soft">Cross platform</span>
+            <span class="badge-soft">Time series</span>
           </div>
 
-          <div class="pill-legend">
-            <span class="meta">Meta</span>
-            <span class="tiktok">TikTok</span>
-            <span class="youtube">YouTube</span>
+          <div class="line-chart">
+            <svg viewBox="0 0 100 40" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="lineGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(34,197,94,0.45)" />
+                  <stop offset="100%" stop-color="rgba(15,23,42,0.05)" />
+                </linearGradient>
+              </defs>
+
+              <!-- grid -->
+              <line x1="0" y1="35" x2="100" y2="35" class="line-grid-line" />
+              <line x1="0" y1="25" x2="100" y2="25" class="line-grid-line" />
+              <line x1="0" y1="15" x2="100" y2="15" class="line-grid-line" />
+
+              <!-- line and area (arbitrary points) -->
+              <path
+                class="line-path"
+                d="M0,30 L10,28 L20,24 L30,26 L40,21 L50,18 L60,16 L70,20 L80,17 L90,15 L100,18 L100,35 L0,35 Z"
+              />
+
+              <!-- points -->
+              <circle cx="10" cy="28" r="1.3" class="line-circle" />
+              <circle cx="20" cy="24" r="1.3" class="line-circle" />
+              <circle cx="30" cy="26" r="1.3" class="line-circle negative" />
+              <circle cx="40" cy="21" r="1.3" class="line-circle" />
+              <circle cx="50" cy="18" r="1.3" class="line-circle" />
+              <circle cx="60" cy="16" r="1.3" class="line-circle" />
+              <circle cx="70" cy="20" r="1.3" class="line-circle negative" />
+              <circle cx="80" cy="17" r="1.3" class="line-circle" />
+              <circle cx="90" cy="15" r="1.3" class="line-circle" />
+            </svg>
+            <div class="line-chart-xaxis">
+              <span>Day 1</span><span>3</span><span>5</span><span>7</span><span>9</span><span>11</span><span>13</span>
+            </div>
           </div>
 
-          <div class="mini-chart">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-          </div>
-          <div class="mini-chart-x">
-            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span>
-          </div>
-
-          <div class="stat-grid-2" style="margin-top:10px;">
+          <div class="stat-grid-2" style="margin-top:8px;">
             <div class="stat-box">
-              <div class="stat-label">Weekly online reach</div>
-              <div class="stat-value number-positive">450k</div>
-              <div class="stat-label number-positive">↑ 22% vs previous week</div>
+              <div class="stat-label">Conversion trend</div>
+              <div class="stat-value number-positive">+14%</div>
+              <div class="stat-label">Higher close to weekend</div>
             </div>
             <div class="stat-box">
-              <div class="stat-label">Cost per result</div>
-              <div class="stat-value number-negative">$3.42</div>
-              <div class="stat-label number-negative">↑ 11% vs target CPA</div>
+              <div class="stat-label">Spend spikes</div>
+              <div class="stat-value number-negative">+21%</div>
+              <div class="stat-label">Two days with inefficient CPM</div>
             </div>
           </div>
         </div>
 
-        <!-- Creatives & messages + Insights -->
+        <!-- grid-full: donut and insights + PPC table -->
         <div class="grid-full">
-          <!-- Creatives and messaging -->
+          <!-- donut / mix card -->
           <div class="card">
             <div class="card-header">
               <div>
                 <div class="card-title">
-                  <span class="icon">🎬</span>
-                  Creatives and key messages
+                  <span class="icon">🟢</span>
+                  Channel mix and efficiency
                 </div>
                 <div class="card-subtitle">
-                  What works and what underperforms in the online narrative.
+                  Share of spend and results by platform.
                 </div>
               </div>
-              <span class="badge-soft">A/B tests · formats · sentiment</span>
+              <span class="badge-soft">Donut and KPIs</span>
             </div>
 
-            <div class="chips-row" style="margin-bottom:8px;">
-              <span class="chip">Short vertical video</span>
-              <span class="chip">Static carousels</span>
-              <span class="chip">Long form YouTube</span>
-              <span class="chip">Search copy</span>
+            <div class="donut-wrapper">
+              <div class="donut">
+                <div class="donut-inner">
+                  <span>Meta</span>
+                  <span class="number-positive">48%</span>
+                  <span style="font-size:9px;">of conversions</span>
+                </div>
+              </div>
+              <div class="donut-legend">
+                <div class="donut-legend-row">
+                  <span class="donut-label meta">Meta</span>
+                  <span class="number-positive">48% conv · 42% spend</span>
+                </div>
+                <div class="donut-legend-row">
+                  <span class="donut-label tiktok">TikTok</span>
+                  <span class="number-positive">27% conv · 18% spend</span>
+                </div>
+                <div class="donut-legend-row">
+                  <span class="donut-label youtube">YouTube</span>
+                  <span class="number-positive">15% conv · 21% spend</span>
+                </div>
+                <div class="donut-legend-row">
+                  <span class="donut-label search">Search</span>
+                  <span class="number-negative">10% conv · 19% spend</span>
+                </div>
+              </div>
             </div>
 
             <div class="stat-grid-2">
               <div class="stat-box">
-                <div class="stat-label">Video completion rate</div>
-                <div class="stat-value number-positive">64%</div>
-                <div class="stat-label">Best for personal testimonies</div>
+                <div class="stat-label">Weighted CPA</div>
+                <div class="stat-value number-negative">$4.12</div>
+                <div class="stat-label">Target $3.50</div>
               </div>
               <div class="stat-box">
-                <div class="stat-label">Negative sentiment items</div>
-                <div class="stat-value number-negative">1</div>
-                <div class="stat-label">Under active moderation and response</div>
-              </div>
-            </div>
-
-            <div style="margin-top:10px; font-size:11px; color:var(--text-muted);">
-              Creative funnel this week:
-            </div>
-            <div class="stat-grid-2" style="margin-top:6px;">
-              <div class="stat-box">
-                <div class="stat-label">Assets in rotation</div>
-                <div class="stat-value number-positive">42</div>
-                <div class="stat-label">Video, static and stories</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-label">Underperforming variants</div>
-                <div class="stat-value number-negative">7</div>
-                <div class="stat-label">Marked for pause or rewrite</div>
+                <div class="stat-label">Positive content ratio</div>
+                <div class="stat-value number-positive">81%</div>
+                <div class="stat-label">Sentiment on posts and comments</div>
               </div>
             </div>
           </div>
 
-          <!-- Insights and next steps -->
+          <!-- insights card -->
           <div class="card">
             <div class="card-header">
               <div>
                 <div class="card-title">
                   <span class="icon">⚡</span>
-                  Insights and next steps
+                  Insights and next moves
                 </div>
                 <div class="card-subtitle">
-                  Automated insights based on digital performance data only.
+                  Automated read on winners and risks in the campaigns.
                 </div>
               </div>
-              <span class="badge-soft">For campaign leadership</span>
+              <span class="badge-soft">For leadership use</span>
             </div>
 
             <div class="insights-list">
               <div class="insight">
                 <div class="insight-icon">➀</div>
                 <div class="insight-text">
-                  <div class="insight-title">Strengthen creator led content</div>
+                  <div class="insight-title">Shift budget toward creator led content</div>
                   <div class="insight-meta">
-                    TikTok creator content drives <span class="number-positive">65%+</span> of engagement with
-                    only <span class="number-positive">28%</span> of spend reallocate budget.
+                    TikTok in New York and California delivers
+                    <span class="number-positive">3.1×</span> higher conversion rate and
+                    <span class="number-positive">−27%</span> CPA versus cold Meta traffic.
                   </div>
                 </div>
               </div>
@@ -942,10 +1179,11 @@
               <div class="insight">
                 <div class="insight-icon">➁</div>
                 <div class="insight-text">
-                  <div class="insight-title">Fix drop in mid funnel engagement</div>
+                  <div class="insight-title">Control hostile clusters</div>
                   <div class="insight-meta">
-                    Link click to scroll depth is down by
-                    <span class="number-negative">9%</span> on long form landing pages test shorter layouts.
+                    Michigan and some campuses in Illinois and Oregon create
+                    <span class="number-negative">63%</span> of hostile comments with only
+                    <span class="number-negative">24%</span> of impressions.
                   </div>
                 </div>
               </div>
@@ -955,9 +1193,9 @@
                 <div class="insight-text">
                   <div class="insight-title">Retarget high intent visitors</div>
                   <div class="insight-meta">
-                    Petition and donation audiences show
-                    <span class="number-positive">3.1×</span> higher conversion rate in remarketing and
-                    <span class="number-positive">−27%</span> CPA vs cold.
+                    Petition and donation visitors show
+                    <span class="number-positive">3×</span> higher click to action rate and
+                    <span class="number-positive">−22%</span> CPA in remarketing lists.
                   </div>
                 </div>
               </div>
@@ -965,10 +1203,10 @@
               <div class="insight">
                 <div class="insight-icon">➃</div>
                 <div class="insight-text">
-                  <div class="insight-title">Align weekly digital message</div>
+                  <div class="insight-title">Keep one narrative across all assets</div>
                   <div class="insight-meta">
-                    One weekly key message mirrored on Meta, TikTok, YouTube and email improves CTR by
-                    <span class="number-positive">0.6 pp</span> in previous sprints.
+                    Unified weekly message improved click rate by
+                    <span class="number-positive">0.6 pp</span> in previous waves.
                   </div>
                 </div>
               </div>
@@ -976,19 +1214,121 @@
           </div>
         </div>
 
-        <!-- Audience, funnel and US map -->
+        <!-- PPC table card -->
+        <div class="card" style="grid-column: 1 / -1;">
+          <div class="card-header">
+            <div>
+              <div class="card-title">
+                <span class="icon">📑</span>
+                PPC campaign table
+              </div>
+              <div class="card-subtitle">
+                Key metrics for active campaigns across the network.
+              </div>
+            </div>
+            <span class="badge-soft">Readable list view</span>
+          </div>
+
+          <div class="ppc-table-wrapper">
+            <table class="ppc-table">
+              <thead>
+                <tr>
+                  <th>Campaign</th>
+                  <th>Channel</th>
+                  <th>State focus</th>
+                  <th>Impr</th>
+                  <th>Clicks</th>
+                  <th>CTR</th>
+                  <th>CPC</th>
+                  <th>CPA</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>NYC testimony carousel</td>
+                  <td>Meta</td>
+                  <td>New York</td>
+                  <td>320k</td>
+                  <td>11.2k</td>
+                  <td class="number-positive">3.5%</td>
+                  <td class="number-positive">$0.36</td>
+                  <td class="number-positive">$2.90</td>
+                  <td><span class="ppc-status-pill good">Scale up</span></td>
+                </tr>
+                <tr>
+                  <td>SoCal creator stories</td>
+                  <td>TikTok</td>
+                  <td>California</td>
+                  <td>210k</td>
+                  <td>9.8k</td>
+                  <td class="number-positive">4.7%</td>
+                  <td class="number-positive">$0.29</td>
+                  <td class="number-positive">$2.40</td>
+                  <td><span class="ppc-status-pill good">Hero</span></td>
+                </tr>
+                <tr>
+                  <td>South Florida families video</td>
+                  <td>YouTube</td>
+                  <td>Florida</td>
+                  <td>180k</td>
+                  <td>5.4k</td>
+                  <td class="number-positive">3.0%</td>
+                  <td class="number-positive">$0.32</td>
+                  <td class="number-positive">$3.10</td>
+                  <td><span class="ppc-status-pill good">Keep</span></td>
+                </tr>
+                <tr>
+                  <td>Campus search response</td>
+                  <td>Search</td>
+                  <td>Michigan</td>
+                  <td>96k</td>
+                  <td>2.1k</td>
+                  <td class="number-positive">2.2%</td>
+                  <td class="number-negative">$0.78</td>
+                  <td class="number-negative">$6.40</td>
+                  <td><span class="ppc-status-pill bad">Fix or pause</span></td>
+                </tr>
+                <tr>
+                  <td>Texas community outreach</td>
+                  <td>Meta</td>
+                  <td>Texas</td>
+                  <td>150k</td>
+                  <td>4.2k</td>
+                  <td class="number-positive">2.8%</td>
+                  <td class="number-positive">$0.44</td>
+                  <td class="number-positive">$3.30</td>
+                  <td><span class="ppc-status-pill good">Stable</span></td>
+                </tr>
+                <tr>
+                  <td>Boston long form article</td>
+                  <td>Search</td>
+                  <td>Massachusetts</td>
+                  <td>72k</td>
+                  <td>1.3k</td>
+                  <td class="number-negative">1.8%</td>
+                  <td class="number-negative">$0.83</td>
+                  <td class="number-negative">$7.20</td>
+                  <td><span class="ppc-status-pill warn">Rewrite</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- audience, funnel and US map -->
         <div class="card" style="grid-column: 1 / -1;">
           <div class="card-header">
             <div>
               <div class="card-title">
                 <span class="icon">👥</span>
-                Audience and digital funnel
+                Audience funnel and US map
               </div>
               <div class="card-subtitle">
-                How online audiences move from reach to concrete actions.
+                From reach to actions plus geographical view of support and friction.
               </div>
             </div>
-            <span class="badge-soft">Top of funnel to core supporters</span>
+            <span class="badge-soft">United States focus</span>
           </div>
 
           <div class="stat-grid-2">
@@ -1008,32 +1348,92 @@
           <div class="us-map-section">
             <div class="us-map-title">US geolocation performance</div>
             <div class="us-map-subtitle">
-              High level heatmap aligned with population centers and response to the campaign narrative.
+              Green clusters show strong pro Israeli engagement. Red clusters mark states or metros with high anti Israeli activity and hostile response.
             </div>
 
             <div class="us-map">
               <!-- positive regions -->
-              <div class="us-region region-positive" style="top:22%; left:62%;">NYC metro high support</div>
-              <div class="us-region region-positive" style="top:64%; left:18%;">SoCal diaspora clusters</div>
-              <div class="us-region region-positive" style="top:70%; left:70%;">South Florida communities</div>
+              <div class="us-region region-positive" style="top:60%; left:6%;">California SoCal diaspora</div>
+              <div class="us-region region-positive" style="top:62%; left:74%;">Florida South Florida communities</div>
+              <div class="us-region region-positive" style="top:20%; left:60%;">New York NYC metro support</div>
+              <div class="us-region region-positive" style="top:55%; left:48%;">Texas Houston and Dallas</div>
 
-              <!-- negative or high friction regions -->
-              <div class="us-region region-negative" style="top:36%; left:30%;">Campus hubs high pushback</div>
-              <div class="us-region region-negative" style="top:30%; left:58%;">Urban protest corridors</div>
+              <!-- negative regions -->
+              <div class="us-region region-negative" style="top:32%; left:32%;">Michigan campus hubs</div>
+              <div class="us-region region-negative" style="top:30%; left:52%;">Illinois and Midwest protest corridors</div>
             </div>
 
             <div class="us-map-legend">
               <span class="legend-pos">
-                Green clusters
-                <span class="number-positive">62%</span> of impressions and
-                <span class="number-positive">71%</span> of positive interactions
+                Green clusters New York, California, Florida, Texas
+                hold <span class="number-positive">62%</span> of impressions and
+                <span class="number-positive">71%</span> of positive interactions.
               </span>
               <span class="legend-neg">
-                Red clusters
-                <span class="number-negative">24%</span> of impressions but
-                <span class="number-negative">63%</span> of hostile comments and reports
+                Red clusters Michigan, Illinois and some Pacific Northwest campuses
+                take <span class="number-negative">24%</span> of impressions but
+                <span class="number-negative">63%</span> of hostile comments and reports.
               </span>
             </div>
+          </div>
+
+          <!-- state summary table -->
+          <div class="state-table-wrapper">
+            <table class="state-table">
+              <thead>
+                <tr>
+                  <th>State</th>
+                  <th>Role</th>
+                  <th>Support index</th>
+                  <th>Hostile share</th>
+                  <th>Comment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>New York</td>
+                  <td>Pro Israeli stronghold</td>
+                  <td class="number-positive">86</td>
+                  <td class="number-negative">9%</td>
+                  <td>High engagement around families stories.</td>
+                </tr>
+                <tr>
+                  <td>California</td>
+                  <td>Mixed but large supportive base</td>
+                  <td class="number-positive">78</td>
+                  <td class="number-negative">18%</td>
+                  <td>Strong SoCal clusters. Some Bay Area friction.</td>
+                </tr>
+                <tr>
+                  <td>Florida</td>
+                  <td>Community driven support</td>
+                  <td class="number-positive">82</td>
+                  <td class="number-negative">11%</td>
+                  <td>South Florida communities respond well to video testimonies.</td>
+                </tr>
+                <tr>
+                  <td>Texas</td>
+                  <td>Growing support</td>
+                  <td class="number-positive">73</td>
+                  <td class="number-negative">14%</td>
+                  <td>Good performance in Houston and Dallas suburbs.</td>
+                </tr>
+                <tr>
+                  <td>Michigan</td>
+                  <td>High friction campuses</td>
+                  <td class="number-negative">41</td>
+                  <td class="number-negative">32%</td>
+                  <td>Strong opposition around university towns. Needs careful copy.</td>
+                </tr>
+                <tr>
+                  <td>Illinois</td>
+                  <td>Split audience</td>
+                  <td class="number-negative">52</td>
+                  <td class="number-negative">24%</td>
+                  <td>Chicago heavy protest coverage against the narrative.</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           <div class="list" style="margin-top:10px;">
@@ -1041,8 +1441,8 @@
               <div class="list-item-main">
                 <div class="list-title">Peak activity days</div>
                 <div class="list-meta">
-                  Sunday, Tuesday, Thursday heavy traffic and response rates
-                  CPC improves by <span class="number-positive">12%</span> on these days.
+                  Sunday, Tuesday, Thursday traffic high. CPC improves by
+                  <span class="number-positive">12%</span> on these days.
                 </div>
               </div>
               <div class="list-metric">
@@ -1053,8 +1453,8 @@
               <div class="list-item-main">
                 <div class="list-title">Coverage gaps</div>
                 <div class="list-meta">
-                  Late night North America and early Europe slots under served
-                  CTR down <span class="number-negative">1.1 pp</span> vs daily average.
+                  Late night North America and early Europe slots under served.
+                  CTR down <span class="number-negative">1.1 pp</span> versus daily average.
                 </div>
               </div>
               <div class="list-metric">
@@ -1064,8 +1464,8 @@
           </div>
         </div>
 
-      </div> <!-- /grid-main -->
-    </div> <!-- /app -->
-  </div> <!-- /frame-16x9 -->
+      </div> <!-- grid-main -->
+    </div> <!-- app -->
+  </div> <!-- frame-16x9 -->
 </body>
 </html>
