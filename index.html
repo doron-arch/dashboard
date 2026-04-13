@@ -3,178 +3,247 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FRAME Privacy-Preserving Analytics</title>
+  <title>FRAME Shared Analytics Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #07111f;
-      --panel: #0d1a2b;
-      --panel-2: #12233a;
-      --line: rgba(135, 189, 255, 0.16);
-      --text: #edf4ff;
-      --muted: #9eb2cc;
-      --accent: #7fd1ff;
-      --accent-2: #46a7ff;
-      --good: #7be0b3;
-      --warn: #ffd27a;
-      --soft: rgba(127, 209, 255, 0.08);
-      --danger: #ff8c8c;
-      --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-      --radius: 20px;
+      --bg: #F5F5F7;
+      --card: #FFFFFF;
+      --border: #E0E0E0;
+      --text: #06061A;
+      --muted: #666666;
+      --brand: #1800AD;
+      --data: #4FC3F7;
+      --threat: #FF5252;
+      --warning: #FF8A80;
+      --grey-dark: #B0B0B0;
+      --shadow: 0 2px 8px rgba(0,0,0,0.08);
+      --radius: 8px;
+      --space: 20px;
     }
 
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: radial-gradient(circle at top left, #102642 0%, var(--bg) 42%, #050b14 100%); color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    body { min-height: 100vh; }
-
-    .shell {
-      display: grid;
-      grid-template-columns: 280px 1fr 320px;
-      min-height: 100vh;
-      gap: 18px;
-      padding: 18px;
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, Arial, sans-serif;
     }
 
-    .sidebar, .main, .rail { min-width: 0; }
+    body {
+      min-height: 100vh;
+    }
 
-    .panel {
-      background: linear-gradient(180deg, rgba(18,35,58,0.98), rgba(10,22,38,0.98));
-      border: 1px solid var(--line);
+    .app {
+      display: grid;
+      grid-template-columns: 260px 1fr 320px;
+      gap: 20px;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
 
-    .sidebar {
-      padding: 18px;
+    .left,
+    .center,
+    .right {
+      min-width: 0;
+    }
+
+    .left {
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
     }
 
-    .brand {
-      padding: 18px;
-      background: linear-gradient(180deg, rgba(127, 209, 255, 0.12), rgba(127, 209, 255, 0.04));
-      border-radius: 18px;
-      border: 1px solid rgba(127, 209, 255, 0.18);
+    .brand-block {
+      padding: 18px 18px 16px;
     }
 
-    .brand .tag {
-      font-size: 12px;
-      letter-spacing: 0.2em;
+    .logo {
+      display: inline-flex;
+      align-items: baseline;
+      color: var(--brand);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .logo .bracket {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 100;
+      font-size: 34px;
+      letter-spacing: 0;
+    }
+
+    .logo .word {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: 38px;
+      letter-spacing: 5px;
+      margin: 0 4px;
+    }
+
+    .tagline {
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      color: rgba(6, 6, 26, 0.42);
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 6px;
-      font-weight: 700;
+      margin-bottom: 14px;
     }
 
-    .brand h1 {
-      margin: 0;
+    .brand-title,
+    .section-title,
+    .page-title,
+    .panel-title,
+    .kpi-value,
+    .nav-title {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .brand-title {
       font-size: 30px;
-      letter-spacing: 0.08em;
-      font-weight: 800;
+      color: var(--text);
+      margin: 0 0 8px;
     }
 
-    .brand p {
-      margin: 10px 0 0;
+    .brand-copy {
+      margin: 0;
       color: var(--muted);
       line-height: 1.45;
-      font-size: 13px;
+      font-size: 14px;
     }
 
-    .nav h3,
+    .nav-section,
+    .filter-section {
+      padding: 18px;
+    }
+
+    .nav-title,
     .section-title {
-      margin: 0 0 10px;
-      font-size: 12px;
-      letter-spacing: 0.16em;
+      font-size: 22px;
+      color: var(--brand);
+      margin: 0 0 14px;
       text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 700;
     }
 
     .nav-list {
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 8px;
     }
 
     .nav-item {
-      padding: 12px 14px;
-      border-radius: 14px;
-      color: var(--text);
-      background: transparent;
-      border: 1px solid transparent;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 14px;
+      padding: 12px 12px;
+      color: var(--muted);
+      border-bottom: 1px solid transparent;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .nav-item.active {
-      background: var(--soft);
-      border-color: rgba(127, 209, 255, 0.18);
+      color: var(--brand);
+      border-bottom-color: var(--brand);
+      font-weight: 700;
     }
 
-    .chip {
-      padding: 5px 9px;
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 24px;
+      padding: 0 10px;
       border-radius: 999px;
       font-size: 11px;
-      color: var(--accent);
-      background: rgba(127, 209, 255, 0.08);
-      border: 1px solid rgba(127, 209, 255, 0.16);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(24, 0, 173, 0.10);
+      color: var(--brand);
     }
 
-    .filter-box {
-      padding: 14px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--line);
+    .pill.data {
+      background: rgba(79, 195, 247, 0.15);
+      color: var(--data);
+    }
+
+    .pill.threat {
+      background: rgba(255, 82, 82, 0.12);
+      color: var(--threat);
+    }
+
+    .filter-grid {
       display: grid;
-      gap: 12px;
+      gap: 14px;
     }
 
     label {
       display: block;
-      font-size: 12px;
-      color: var(--muted);
       margin-bottom: 6px;
-      font-weight: 600;
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
     }
 
-    select, .fake-input {
+    select,
+    .fake-field {
       width: 100%;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
+      height: 42px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #FFFFFF;
       color: var(--text);
-      padding: 12px 12px;
       font-size: 14px;
+      padding: 0 12px;
       outline: none;
     }
 
-    .main {
+    select:focus,
+    .fake-field:focus {
+      border-color: var(--brand);
+    }
+
+    .center {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 20px;
     }
 
     .hero {
       padding: 22px;
       display: flex;
       justify-content: space-between;
-      gap: 18px;
+      gap: 20px;
       align-items: flex-start;
     }
 
-    .hero h2 {
+    .page-title {
+      font-size: 36px;
+      color: var(--text);
       margin: 0 0 10px;
-      font-size: 28px;
-      line-height: 1.15;
+      text-transform: uppercase;
+      line-height: 1;
     }
 
-    .hero p {
+    .hero-copy {
       margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
       max-width: 760px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 15px;
     }
 
     .hero-actions {
@@ -185,103 +254,107 @@
     }
 
     .btn {
-      border-radius: 999px;
-      padding: 11px 14px;
-      border: 1px solid rgba(127, 209, 255, 0.18);
-      background: rgba(127, 209, 255, 0.08);
-      color: var(--text);
-      font-size: 13px;
+      height: 40px;
+      padding: 0 14px;
+      border: 1px solid var(--brand);
+      background: #FFFFFF;
+      color: var(--brand);
+      border-radius: 0;
+      font-size: 12px;
       font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
     }
 
     .btn.primary {
-      background: linear-gradient(180deg, var(--accent), var(--accent-2));
-      color: #04101d;
-      border: none;
+      background: var(--brand);
+      color: #FFFFFF;
     }
 
-    .kpi-grid {
+    .kpis {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+      gap: 16px;
     }
 
     .kpi {
       padding: 18px;
-      min-height: 138px;
-      position: relative;
-      overflow: hidden;
+      min-height: 148px;
     }
 
-    .kpi::after {
-      content: "";
-      position: absolute;
-      inset: auto -20px -20px auto;
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(127, 209, 255, 0.18), transparent 70%);
-    }
-
-    .kpi .label {
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    .kpi-label {
+      font-size: 10px;
       color: var(--muted);
-      margin-bottom: 14px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
       font-weight: 700;
     }
 
-    .kpi .value {
-      font-size: 34px;
-      font-weight: 800;
+    .kpi-value {
+      font-size: 58px;
+      line-height: 0.95;
       margin-bottom: 8px;
+      color: var(--brand);
     }
 
-    .kpi .sub {
+    .kpi-value.data {
+      color: var(--data);
+    }
+
+    .kpi-value.threat {
+      color: var(--threat);
+    }
+
+    .kpi-copy {
       font-size: 13px;
       color: var(--muted);
       line-height: 1.45;
-      max-width: 90%;
     }
 
-    .content-grid {
+    .main-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 18px;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
     }
 
-    .block {
-      padding: 18px;
+    .panel {
+      padding: 20px;
     }
 
-    .block-head {
+    .panel-head {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 16px;
     }
 
-    .block-head h3 {
+    .panel-title {
+      font-size: 24px;
+      color: var(--brand);
+      margin: 0 0 6px;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .panel-note {
       margin: 0;
-      font-size: 18px;
-    }
-
-    .small-note {
-      font-size: 12px;
       color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
     }
 
-    .chart-area {
-      height: 260px;
+    .chart {
+      height: 280px;
       display: flex;
       align-items: flex-end;
-      gap: 12px;
-      padding-top: 22px;
+      gap: 14px;
+      padding-top: 20px;
     }
 
-    .bar-col {
+    .column {
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -291,171 +364,160 @@
 
     .bar {
       width: 100%;
-      max-width: 80px;
-      border-radius: 14px 14px 6px 6px;
-      background: linear-gradient(180deg, rgba(127,209,255,0.95), rgba(70,167,255,0.35));
-      border: 1px solid rgba(127,209,255,0.2);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+      max-width: 78px;
+      border: 1px solid var(--border);
+      background: rgba(79, 195, 247, 0.18);
       position: relative;
     }
 
-    .bar.median {
-      background: linear-gradient(180deg, rgba(255,210,122,0.9), rgba(255,210,122,0.28));
-      border-color: rgba(255,210,122,0.18);
+    .bar.data {
+      background: rgba(79, 195, 247, 0.28);
+      border-color: rgba(79, 195, 247, 0.6);
     }
 
-    .bar.top {
-      background: linear-gradient(180deg, rgba(123,224,179,0.9), rgba(123,224,179,0.28));
-      border-color: rgba(123,224,179,0.18);
+    .bar.brand {
+      background: rgba(24, 0, 173, 0.12);
+      border-color: rgba(24, 0, 173, 0.5);
+    }
+
+    .bar.threat {
+      background: rgba(255, 82, 82, 0.14);
+      border-color: rgba(255, 82, 82, 0.55);
     }
 
     .bar-label {
+      text-align: center;
       font-size: 12px;
       color: var(--muted);
-      text-align: center;
       line-height: 1.35;
     }
 
-    .insight-list {
+    .bar-label strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .insights {
       display: grid;
       gap: 12px;
     }
 
-    .insight {
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-      padding: 14px;
+    .insight-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--data);
+      padding: 14px 14px 14px 16px;
     }
 
-    .insight .title {
+    .insight-item.warning {
+      border-left-color: var(--warning);
+    }
+
+    .insight-item.threat {
+      border-left-color: var(--threat);
+    }
+
+    .insight-title {
+      margin: 0 0 6px;
       font-size: 14px;
       font-weight: 700;
-      margin-bottom: 6px;
+      color: var(--text);
     }
 
-    .insight p {
+    .insight-copy {
       margin: 0;
       font-size: 13px;
       line-height: 1.5;
       color: var(--muted);
     }
 
-    .rail {
+    .right {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 20px;
     }
 
-    .status-grid {
-      display: grid;
-      gap: 12px;
-    }
-
-    .status {
-      padding: 14px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .status-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      display: inline-block;
-      margin-right: 8px;
-      vertical-align: middle;
-    }
-
-    .green { background: var(--good); }
-    .yellow { background: var(--warn); }
-    .blue { background: var(--accent); }
-
-    .status p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .privacy-table {
+    .rows {
       display: grid;
       gap: 10px;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
     .row {
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 12px;
       align-items: center;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.04);
-      font-size: 13px;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #FFFFFF;
     }
 
-    .row .left {
+    .row-copy {
       color: var(--muted);
+      font-size: 13px;
       line-height: 1.45;
     }
 
-    .badge {
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      background: rgba(123,224,179,0.12);
-      color: var(--good);
-      border: 1px solid rgba(123,224,179,0.14);
-      white-space: nowrap;
+    .small-card {
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #FFFFFF;
     }
 
-    .badge.warn {
-      background: rgba(255,210,122,0.12);
-      color: var(--warn);
-      border-color: rgba(255,210,122,0.14);
+    .small-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
     }
 
-    .footer-note {
+    .small-copy {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .foot-note {
       margin-top: 14px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: rgba(70,167,255,0.08);
-      border: 1px solid rgba(70,167,255,0.16);
       color: var(--muted);
       font-size: 12px;
       line-height: 1.55;
     }
 
-    @media (max-width: 1280px) {
-      .shell {
-        grid-template-columns: 1fr;
-      }
-      .content-grid, .kpi-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .rail, .sidebar { order: 2; }
+    .bracket-header {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      color: var(--brand);
+      font-size: 22px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 0 0 14px;
     }
 
-    @media (max-width: 820px) {
-      .content-grid, .kpi-grid {
+    @media (max-width: 1320px) {
+      .app {
         grid-template-columns: 1fr;
       }
+
+      .kpis,
+      .main-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .kpis,
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+
       .hero {
         flex-direction: column;
       }
@@ -463,28 +525,31 @@
   </style>
 </head>
 <body>
-  <div class="shell">
-    <aside class="sidebar panel">
-      <div class="brand">
-        <div class="tag">FRAME</div>
-        <h1>Shared Analytics</h1>
-        <p>Privacy preserving ecosystem analytics for partner organizations. Shared insight, zero raw-data exposure.</p>
+  <div class="app">
+    <aside class="left card">
+      <div class="brand-block">
+        <div class="logo" aria-label="FRAME logo">
+          <span class="bracket">[</span><span class="word">FRAME</span><span class="bracket">]</span>
+        </div>
+        <div class="tagline">SHARED INTELLIGENCE HUB</div>
+        <h1 class="brand-title">SHARED ANALYTICS</h1>
+        <p class="brand-copy">Privacy-preserving ecosystem analytics for partner organizations. Shared insight, safe benchmarking, no raw-data exposure.</p>
       </div>
 
-      <section class="nav">
-        <h3>Workspace</h3>
+      <section class="nav-section card" style="box-shadow:none;">
+        <h2 class="nav-title">[WORKSPACE]</h2>
         <div class="nav-list">
-          <div class="nav-item active">Ecosystem overview <span class="chip">Live</span></div>
-          <div class="nav-item">Benchmarking <span class="chip">Safe</span></div>
+          <div class="nav-item active">Ecosystem overview <span class="pill">LIVE</span></div>
+          <div class="nav-item">Benchmarking <span class="pill data">SAFE</span></div>
           <div class="nav-item">Partner health</div>
           <div class="nav-item">Insight feed</div>
           <div class="nav-item">Privacy controls</div>
         </div>
       </section>
 
-      <section>
-        <h3 class="section-title">Filters</h3>
-        <div class="filter-box">
+      <section class="filter-section card" style="box-shadow:none;">
+        <h2 class="nav-title">[FILTERS]</h2>
+        <div class="filter-grid">
           <div>
             <label>Time range</label>
             <select>
@@ -514,163 +579,159 @@
           </div>
           <div>
             <label>Visible comparison</label>
-            <div class="fake-input">Your org vs ecosystem median</div>
+            <div class="fake-field">Your organization vs ecosystem median</div>
           </div>
         </div>
       </section>
     </aside>
 
-    <main class="main">
-      <section class="hero panel">
+    <main class="center">
+      <section class="hero card">
         <div>
-          <h2>Relevant analytics without exposing partner data</h2>
-          <p>
-            This mockup shows how FRAME can return ecosystem insight, performance benchmarks, and trend signals while keeping raw organizational data private. Partners see only allowed aggregates, thresholds, and anonymous comparisons.
-          </p>
+          <h1 class="page-title">RELEVANT ANALYTICS WITHOUT EXPOSING PARTNER DATA</h1>
+          <p class="hero-copy">This mockup shows how FRAME can return ecosystem insight, performance benchmarks, and trend signals while keeping raw organizational data private. Partners see only approved aggregates, privacy-thresholded comparisons, and safe operational summaries.</p>
         </div>
         <div class="hero-actions">
-          <button class="btn">Export safe report</button>
-          <button class="btn">View audit log</button>
-          <button class="btn primary">Privacy status: protected</button>
+          <button class="btn">EXPORT SAFE REPORT</button>
+          <button class="btn">VIEW AUDIT LOG</button>
+          <button class="btn primary">PRIVACY STATUS: PROTECTED</button>
         </div>
       </section>
 
-      <section class="kpi-grid">
-        <div class="kpi panel">
-          <div class="label">Active incidents</div>
-          <div class="value">14</div>
-          <div class="sub">Aggregated across eligible partners. Threshold policy active.</div>
-        </div>
-        <div class="kpi panel">
-          <div class="label">Median response time</div>
-          <div class="value">42m</div>
-          <div class="sub">Compared to your organization at 36 minutes, without naming peers.</div>
-        </div>
-        <div class="kpi panel">
-          <div class="label">Partner participation</div>
-          <div class="value">8 / 11</div>
-          <div class="sub">Active contribution this week. Identities hidden unless mutually visible.</div>
-        </div>
-        <div class="kpi panel">
-          <div class="label">Data freshness</div>
-          <div class="value">91%</div>
-          <div class="sub">Normalized ingestion health across approved connectors and safe exports.</div>
-        </div>
+      <section class="kpis">
+        <article class="kpi card">
+          <div class="kpi-label">ACTIVE INCIDENTS</div>
+          <div class="kpi-value threat">14</div>
+          <div class="kpi-copy">Aggregated across eligible partners. Minimum cohort threshold enforced.</div>
+        </article>
+        <article class="kpi card">
+          <div class="kpi-label">MEDIAN RESPONSE TIME</div>
+          <div class="kpi-value brand">42M</div>
+          <div class="kpi-copy">Compared to your organization at 36 minutes, without naming peer organizations.</div>
+        </article>
+        <article class="kpi card">
+          <div class="kpi-label">PARTNER PARTICIPATION</div>
+          <div class="kpi-value data">8/11</div>
+          <div class="kpi-copy">Active contribution this week. Identities hidden unless mutually visible by policy.</div>
+        </article>
+        <article class="kpi card">
+          <div class="kpi-label">DATA FRESHNESS</div>
+          <div class="kpi-value data">91%</div>
+          <div class="kpi-copy">Normalized ingestion health across approved connectors and safe exports.</div>
+        </article>
       </section>
 
-      <section class="content-grid">
-        <div class="panel block">
-          <div class="block-head">
+      <section class="main-grid">
+        <section class="panel card">
+          <div class="panel-head">
             <div>
-              <h3>Benchmark without exposure</h3>
-              <div class="small-note">No peer names. No raw campaign rows. Only approved comparative views.</div>
+              <h2 class="panel-title">[BENCHMARK WITHOUT EXPOSURE]</h2>
+              <p class="panel-note">No peer names. No raw campaign rows. Only approved comparative views.</p>
             </div>
-            <span class="chip">Privacy threshold met</span>
+            <span class="pill data">THRESHOLD MET</span>
           </div>
-          <div class="chart-area">
-            <div class="bar-col">
-              <div class="bar" style="height: 82%;"></div>
+          <div class="chart">
+            <div class="column">
+              <div class="bar brand" style="height: 230px;"></div>
               <div class="bar-label">Your org<br><strong>36m</strong></div>
             </div>
-            <div class="bar-col">
-              <div class="bar median" style="height: 66%;"></div>
+            <div class="column">
+              <div class="bar data" style="height: 188px;"></div>
               <div class="bar-label">Ecosystem median<br><strong>42m</strong></div>
             </div>
-            <div class="bar-col">
-              <div class="bar top" style="height: 52%;"></div>
+            <div class="column">
+              <div class="bar data" style="height: 150px;"></div>
               <div class="bar-label">Top quartile<br><strong>31m</strong></div>
             </div>
-            <div class="bar-col">
-              <div class="bar" style="height: 58%; opacity: 0.55;"></div>
+            <div class="column">
+              <div class="bar brand" style="height: 165px;"></div>
               <div class="bar-label">Safe reach index<br><strong>118</strong></div>
             </div>
-            <div class="bar-col">
-              <div class="bar median" style="height: 74%; opacity: 0.6;"></div>
-              <div class="bar-label">Engagement lift<br><strong>+14%</strong></div>
+            <div class="column">
+              <div class="bar threat" style="height: 198px;"></div>
+              <div class="bar-label">Threat rise index<br><strong>+14%</strong></div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div class="panel block">
-          <div class="block-head">
+        <section class="panel card">
+          <div class="panel-head">
             <div>
-              <h3>Shared insight feed</h3>
-              <div class="small-note">Actionable conclusions generated from aggregate patterns only.</div>
+              <h2 class="panel-title">[SHARED INSIGHT FEED]</h2>
+              <p class="panel-note">Actionable conclusions generated from aggregate patterns only.</p>
             </div>
           </div>
-          <div class="insight-list">
-            <div class="insight">
-              <div class="title">Campus narratives rising faster than community channels</div>
-              <p>Trend acceleration detected over the last 72 hours. Suggested action: deploy faster rebuttal packages to campus-facing partners.</p>
-            </div>
-            <div class="insight">
-              <div class="title">Arabic video assets outperform static formats this week</div>
-              <p>Cross-partner aggregate indicates stronger completion and share rates for short-form video in Arabic language campaigns.</p>
-            </div>
-            <div class="insight">
-              <div class="title">Weekend coordination gap remains the main delay factor</div>
-              <p>Median response lag rises when fewer than 6 partners contribute fresh data. Consider alert escalation on Fridays.</p>
-            </div>
+          <div class="insights">
+            <article class="insight-item">
+              <h3 class="insight-title">Campus narratives are rising faster than community channels</h3>
+              <p class="insight-copy">Trend acceleration detected over the last 72 hours. Suggested action: deploy faster rebuttal packages to campus-facing partners.</p>
+            </article>
+            <article class="insight-item warning">
+              <h3 class="insight-title">Arabic video assets outperform static formats this week</h3>
+              <p class="insight-copy">Cross-partner aggregate indicates stronger completion and share rates for short-form video in Arabic language campaigns.</p>
+            </article>
+            <article class="insight-item threat">
+              <h3 class="insight-title">Weekend coordination gap remains the main delay factor</h3>
+              <p class="insight-copy">Median response lag rises when fewer than six partners contribute fresh data. Consider alert escalation on Fridays.</p>
+            </article>
           </div>
-        </div>
+        </section>
       </section>
     </main>
 
-    <aside class="rail">
-      <section class="panel block">
-        <div class="block-head">
+    <aside class="right">
+      <section class="panel card">
+        <div class="panel-head">
           <div>
-            <h3>Privacy controls</h3>
-            <div class="small-note">What is visible, what stays private, and why.</div>
+            <h2 class="panel-title">[PRIVACY CONTROLS]</h2>
+            <p class="panel-note">What is visible, what stays private, and why.</p>
           </div>
-          <span class="chip">Enforced</span>
+          <span class="pill">ENFORCED</span>
         </div>
-        <div class="privacy-table">
+        <div class="rows">
           <div class="row">
-            <div class="left">Raw donor, audience, and CRM data</div>
-            <div class="badge">Never shared</div>
+            <div class="row-copy">Raw donor, audience, and CRM data</div>
+            <span class="pill threat">Never shared</span>
           </div>
           <div class="row">
-            <div class="left">Named organization benchmarking</div>
-            <div class="badge warn">Blocked</div>
+            <div class="row-copy">Named organization benchmarking</div>
+            <span class="pill threat">Blocked</span>
           </div>
           <div class="row">
-            <div class="left">Aggregated ecosystem medians and quartiles</div>
-            <div class="badge">Allowed</div>
+            <div class="row-copy">Aggregate ecosystem medians and quartiles</div>
+            <span class="pill data">Allowed</span>
           </div>
           <div class="row">
-            <div class="left">Insights below minimum cohort threshold</div>
-            <div class="badge warn">Suppressed</div>
+            <div class="row-copy">Insights below minimum cohort threshold</div>
+            <span class="pill threat">Suppressed</span>
           </div>
           <div class="row">
-            <div class="left">Exported reports with audit trail</div>
-            <div class="badge">Approved</div>
+            <div class="row-copy">Exported reports with audit trail</div>
+            <span class="pill">Approved</span>
           </div>
         </div>
-        <div class="footer-note">
-          Minimum cohort size: 5 partners. Identity masking enabled. All benchmarks shown here are cohort-based and policy filtered.
-        </div>
+        <p class="foot-note">Minimum cohort size: 5 partners. Identity masking enabled. All benchmarks shown here are cohort-based and policy filtered.</p>
       </section>
 
-      <section class="panel block">
-        <div class="block-head">
+      <section class="panel card">
+        <div class="panel-head">
           <div>
-            <h3>Partner health</h3>
-            <div class="small-note">Operational readiness without exposing peer internals.</div>
+            <h2 class="panel-title">[PARTNER HEALTH]</h2>
+            <p class="panel-note">Operational readiness without exposing peer internals.</p>
           </div>
         </div>
-        <div class="status-grid">
-          <div class="status">
-            <div class="status-head"><span><span class="dot green"></span>Data completeness</span><span>High</span></div>
-            <p>Required signal coverage is above threshold across approved partner cohorts.</p>
+        <div class="rows">
+          <div class="small-card">
+            <div class="small-head"><span>Data completeness</span><span class="pill data">High</span></div>
+            <p class="small-copy">Required signal coverage is above threshold across approved partner cohorts.</p>
           </div>
-          <div class="status">
-            <div class="status-head"><span><span class="dot yellow"></span>Latency risk</span><span>Moderate</span></div>
-            <p>Weekend and overnight sync delays are the main source of ecosystem response variance.</p>
+          <div class="small-card">
+            <div class="small-head"><span>Latency risk</span><span class="pill">Moderate</span></div>
+            <p class="small-copy">Weekend and overnight sync delays remain the main source of ecosystem response variance.</p>
           </div>
-          <div class="status">
-            <div class="status-head"><span><span class="dot blue"></span>Audit state</span><span>Current</span></div>
-            <p>Latest safe analytics export logged 2 hours ago. No privacy policy violations detected.</p>
+          <div class="small-card">
+            <div class="small-head"><span>Audit state</span><span class="pill data">Current</span></div>
+            <p class="small-copy">Latest safe analytics export logged two hours ago. No privacy-policy violations detected.</p>
           </div>
         </div>
       </section>
