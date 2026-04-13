@@ -3,564 +3,569 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FRAME Shared Analytics Mockup</title>
+  <title>FRAME Shared Analytics</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    /* — FRAME Brand Specs v2.0 — Strict Color Palette — */
     :root {
-      --bg: #F5F5F7;
-      --card: #FFFFFF;
-      --border: #E0E0E0;
-      --text: #06061A;
-      --muted: #666666;
-      --brand: #1800AD;
-      --data: #4FC3F7;
-      --threat: #FF5252;
-      --warning: #FF8A80;
-      --grey-dark: #B0B0B0;
-      --shadow: 0 2px 8px rgba(0,0,0,0.08);
-      --radius: 8px;
-      --space: 20px;
+      --INDIGO: #1800AD;
+      --ELECTRIC-BLUE: #4FC3F7;
+      --CORAL-RED: #FF5252;
+      --CORAL-LIGHT: #FF8A80;
+      --DARK-NAVY: #06061A;
     }
 
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Inter, Arial, sans-serif;
+    /* — DARK THEME — */
+    [data-theme="dark"] {
+      --bg: #06061A;
+      --panel: #0E1235;
+      --panel-light: #131848;
+      --card: #0E1235;
+      --border: #222860;
+      --text: #FFFFFF;
+      --text-secondary: #B0B0B0;
+      --muted: #6670A0;
+      --accent: #4FC3F7;
+      --accent-data: #4FC3F7;
+      --brand-display: #4FC3F7;
+      --red: #FF5252;
+      --orange: #FF8A80;
+      --green: #4FC3F7;
+      --shadow: 0 2px 12px rgba(0,0,0,0.4);
+      --card-hover: #151A50;
+      --input-bg: #0A0E2A;
+      --scrollbar-bg: #06061A;
+      --scrollbar-thumb: #222860;
     }
+
+    /* — LIGHT THEME — */
+    [data-theme="light"] {
+      --bg: #F5F5F7;
+      --panel: #FFFFFF;
+      --panel-light: #FAFAFE;
+      --card: #FFFFFF;
+      --border: #D8D8E8;
+      --text: #06061A;
+      --text-secondary: #555555;
+      --muted: #888888;
+      --accent: #1800AD;
+      --accent-data: #1800AD;
+      --brand-display: #1800AD;
+      --red: #FF5252;
+      --orange: #FF8A80;
+      --green: #1800AD;
+      --shadow: 0 2px 8px rgba(0,0,0,0.06);
+      --card-hover: #F0F0FA;
+      --input-bg: #F0F0F5;
+      --scrollbar-bg: #F5F5F7;
+      --scrollbar-thumb: #C0C0D0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
-      min-height: 100vh;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+      line-height: 1.5;
     }
 
+    /* — LAYOUT — */
     .app {
       display: grid;
-      grid-template-columns: 260px 1fr 320px;
-      gap: 20px;
+      grid-template-columns: 280px 1fr;
+      grid-template-rows: auto 1fr;
       min-height: 100vh;
-      padding: 20px;
     }
 
+    @media (max-width: 900px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+    }
+
+    /* — CARD BASE — */
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      border-radius: 8px;
       box-shadow: var(--shadow);
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
     }
 
-    .left,
-    .center,
-    .right {
-      min-width: 0;
-    }
-
-    .left {
-      padding: 20px;
+    /* — SIDEBAR — */
+    .sidebar {
+      grid-row: 1 / -1;
+      background: var(--panel);
+      border-right: 1px solid var(--border);
+      padding: 28px 20px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
+      overflow-y: auto;
+      transition: background 0.3s, border-color 0.3s;
     }
 
-    .brand-block {
-      padding: 18px 18px 16px;
-    }
-
+    /* — FRAME LOGO — */
     .logo {
-      display: inline-flex;
+      display: flex;
       align-items: baseline;
-      color: var(--brand);
-      line-height: 1;
-      margin-bottom: 10px;
+      gap: 0;
+      font-size: 36px;
+      letter-spacing: 6px;
+      user-select: none;
     }
-
     .logo .bracket {
-      font-family: Arial, Helvetica, sans-serif;
-      font-weight: 100;
-      font-size: 34px;
-      letter-spacing: 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 200;
+      color: var(--accent);
     }
-
     .logo .word {
-      font-family: 'Bebas Neue', Impact, sans-serif;
-      font-size: 38px;
-      letter-spacing: 5px;
-      margin: 0 4px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      color: var(--accent);
+      margin: 0 2px;
     }
-
     .tagline {
-      font-size: 9px;
-      letter-spacing: 2.5px;
-      color: rgba(6, 6, 26, 0.42);
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
-    .brand-title,
-    .section-title,
-    .page-title,
-    .panel-title,
-    .kpi-value,
-    .nav-title {
-      font-family: 'Bebas Neue', Impact, sans-serif;
-      letter-spacing: 1px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--muted);
+      margin-top: -2px;
     }
 
     .brand-title {
-      font-size: 30px;
-      color: var(--text);
-      margin: 0 0 8px;
-    }
-
-    .brand-copy {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.45;
-      font-size: 14px;
-    }
-
-    .nav-section,
-    .filter-section {
-      padding: 18px;
-    }
-
-    .nav-title,
-    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
       font-size: 22px;
-      color: var(--brand);
-      margin: 0 0 14px;
-      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text);
+      margin-top: 8px;
+    }
+    .brand-copy {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
     }
 
-    .nav-list {
-      display: grid;
-      gap: 8px;
+    /* — NAV — */
+    .nav-section { padding: 16px; }
+    .nav-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 12px;
     }
-
+    .nav-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
     .nav-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 12px;
-      color: var(--muted);
-      border-bottom: 1px solid transparent;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .nav-item.active {
-      color: var(--brand);
-      border-bottom-color: var(--brand);
-      font-weight: 700;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 24px;
-      padding: 0 10px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      background: rgba(24, 0, 173, 0.10);
-      color: var(--brand);
-    }
-
-    .pill.data {
-      background: rgba(79, 195, 247, 0.15);
-      color: var(--data);
-    }
-
-    .pill.threat {
-      background: rgba(255, 82, 82, 0.12);
-      color: var(--threat);
-    }
-
-    .filter-grid {
-      display: grid;
-      gap: 14px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 10px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-weight: 700;
-    }
-
-    select,
-    .fake-field {
-      width: 100%;
-      height: 42px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: #FFFFFF;
-      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-family: 'Bebas Neue', sans-serif;
       font-size: 14px;
-      padding: 0 12px;
-      outline: none;
+      letter-spacing: 1.5px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-item:hover { background: var(--card-hover); color: var(--text); }
+    .nav-item.active {
+      background: var(--card-hover);
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+    }
+    .pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 0;
+      letter-spacing: 1px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+    }
+    .pill.threat { border-color: var(--red); color: var(--red); }
+    .pill.data { border-color: var(--green); color: var(--green); }
+
+    /* — FILTERS — */
+    .filter-section { padding: 16px; }
+    .filter-grid { display: flex; flex-direction: column; gap: 12px; }
+    .filter-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .filter-select {
+      width: 100%;
+      padding: 8px 12px;
+      background: var(--input-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      appearance: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .filter-select:focus { outline: none; border-color: var(--accent); }
+    .filter-note {
+      font-size: 11px;
+      color: var(--muted);
+      font-style: italic;
     }
 
-    select:focus,
-    .fake-field:focus {
-      border-color: var(--brand);
+    /* — HEADER BAR — */
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 32px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .header-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .theme-toggle-track {
+      width: 40px;
+      height: 22px;
+      border-radius: 11px;
+      background: var(--border);
+      position: relative;
+      transition: background 0.3s;
+    }
+    [data-theme="dark"] .theme-toggle-track { background: var(--accent); }
+    .theme-toggle-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--card);
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.3s;
+    }
+    [data-theme="dark"] .theme-toggle-thumb { transform: translateX(18px); }
+    .theme-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--muted);
     }
 
-    .center {
+    /* — MAIN CONTENT — */
+    .main {
+      padding: 24px 32px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
+      overflow-y: auto;
     }
 
+    /* — HERO — */
     .hero {
-      padding: 22px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      align-items: flex-start;
+      padding: 28px;
+      border-left: 3px solid var(--accent);
     }
-
-    .page-title {
-      font-size: 36px;
+    .hero .page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 2px;
       color: var(--text);
-      margin: 0 0 10px;
-      text-transform: uppercase;
-      line-height: 1;
+      margin-bottom: 8px;
     }
-
     .hero-copy {
-      margin: 0;
-      max-width: 760px;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 15px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      max-width: 700px;
+      line-height: 1.7;
+      margin-bottom: 16px;
     }
-
-    .hero-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
+    .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
     .btn {
-      height: 40px;
-      padding: 0 14px;
-      border: 1px solid var(--brand);
-      background: #FFFFFF;
-      color: var(--brand);
-      border-radius: 0;
+      font-family: 'Bebas Neue', sans-serif;
       font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 8px 20px;
+      border: 1px solid var(--border);
+      border-radius: 0;
+      background: transparent;
+      color: var(--text-secondary);
       cursor: pointer;
+      transition: all 0.2s;
     }
-
+    .btn:hover { border-color: var(--accent); color: var(--accent); }
     .btn.primary {
-      background: var(--brand);
+      background: var(--accent);
       color: #FFFFFF;
+      border-color: var(--accent);
     }
+    [data-theme="light"] .btn.primary { color: #FFFFFF; }
+    .btn.primary:hover { opacity: 0.9; }
 
+    /* — KPIs — */
     .kpis {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 16px;
     }
-
     .kpi {
-      padding: 18px;
-      min-height: 148px;
-    }
-
-    .kpi-label {
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
-
-    .kpi-value {
-      font-size: 58px;
-      line-height: 0.95;
-      margin-bottom: 8px;
-      color: var(--brand);
-    }
-
-    .kpi-value.data {
-      color: var(--data);
-    }
-
-    .kpi-value.threat {
-      color: var(--threat);
-    }
-
-    .kpi-copy {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.45;
-    }
-
-    .main-grid {
-      display: grid;
-      grid-template-columns: 1.18fr 0.82fr;
-      gap: 20px;
-    }
-
-    .panel {
       padding: 20px;
     }
+    .kpi-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .kpi-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .kpi-value.threat { color: var(--red); }
+    .kpi-desc {
+      font-size: 11px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
 
-    .panel-head {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
+    /* — TWO COLUMN SECTIONS — */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 1100px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    .section-card {
+      padding: 24px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .section-subtitle {
+      font-size: 12px;
+      color: var(--muted);
       margin-bottom: 16px;
     }
 
-    .panel-title {
-      font-size: 24px;
-      color: var(--brand);
-      margin: 0 0 6px;
-      text-transform: uppercase;
-      line-height: 1;
+    /* — BENCHMARK TABLE — */
+    .bench-status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1px;
+      color: var(--green);
+      border: 1px solid var(--green);
+      padding: 2px 8px;
+      display: inline-block;
+      margin-bottom: 16px;
     }
-
-    .panel-note {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .chart {
-      height: 280px;
-      display: flex;
-      align-items: flex-end;
-      gap: 14px;
-      padding-top: 20px;
-    }
-
-    .column {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .bar {
-      width: 100%;
-      max-width: 78px;
-      border: 1px solid var(--border);
-      background: rgba(79, 195, 247, 0.18);
-      position: relative;
-    }
-
-    .bar.data {
-      background: rgba(79, 195, 247, 0.28);
-      border-color: rgba(79, 195, 247, 0.6);
-    }
-
-    .bar.brand {
-      background: rgba(24, 0, 173, 0.12);
-      border-color: rgba(24, 0, 173, 0.5);
-    }
-
-    .bar.threat {
-      background: rgba(255, 82, 82, 0.14);
-      border-color: rgba(255, 82, 82, 0.55);
-    }
-
-    .bar-label {
-      text-align: center;
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.35;
-    }
-
-    .bar-label strong {
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    .insights {
-      display: grid;
-      gap: 12px;
-    }
-
-    .insight-item {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--data);
-      padding: 14px 14px 14px 16px;
-    }
-
-    .insight-item.warning {
-      border-left-color: var(--warning);
-    }
-
-    .insight-item.threat {
-      border-left-color: var(--threat);
-    }
-
-    .insight-title {
-      margin: 0 0 6px;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .insight-copy {
-      margin: 0;
-      font-size: 13px;
-      line-height: 1.5;
-      color: var(--muted);
-    }
-
-    .right {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .rows {
-      display: grid;
-      gap: 10px;
-      margin-top: 8px;
-    }
-
-    .row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 12px;
-      padding: 12px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: #FFFFFF;
-    }
-
-    .row-copy {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .small-card {
-      padding: 14px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: #FFFFFF;
-    }
-
-    .small-head {
+    .bench-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 6px;
-      font-size: 14px;
-      font-weight: 700;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .bench-row:last-child { border-bottom: none; }
+    .bench-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .bench-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--accent);
+    }
+    .bench-val.threat { color: var(--red); }
+
+    /* — INSIGHT FEED — */
+    .insight-item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .insight-item:last-child { border-bottom: none; }
+    .insight-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .insight-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* — BOTTOM SECTIONS — */
+    .bottom-sections {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 1100px) {
+      .bottom-sections { grid-template-columns: 1fr; }
+    }
+
+    /* — PRIVACY CONTROLS — */
+    .privacy-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .privacy-row:last-child { border-bottom: none; }
+    .privacy-label { font-size: 13px; color: var(--text-secondary); }
+    .privacy-status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1px;
+      padding: 2px 8px;
+    }
+    .privacy-status.enforced { color: var(--red); border: 1px solid var(--red); }
+    .privacy-status.blocked { color: var(--red); border: 1px solid var(--red); }
+    .privacy-status.allowed { color: var(--green); border: 1px solid var(--green); }
+    .privacy-status.suppressed { color: var(--orange); border: 1px solid var(--orange); }
+    .privacy-status.approved { color: var(--green); border: 1px solid var(--green); }
+    .privacy-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 12px;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* — PARTNER HEALTH — */
+    .health-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .health-item:last-child { border-bottom: none; }
+    .health-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .health-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 1.5px;
       color: var(--text);
     }
-
-    .small-copy {
-      margin: 0;
-      font-size: 13px;
-      line-height: 1.5;
-      color: var(--muted);
-    }
-
-    .foot-note {
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.55;
-    }
-
-    .bracket-header {
-      font-family: 'Bebas Neue', Impact, sans-serif;
-      color: var(--brand);
-      font-size: 22px;
+    .health-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
       letter-spacing: 1px;
-      text-transform: uppercase;
-      margin: 0 0 14px;
+      padding: 2px 8px;
+    }
+    .health-badge.high { color: var(--green); border: 1px solid var(--green); }
+    .health-badge.moderate { color: var(--orange); border: 1px solid var(--orange); }
+    .health-badge.current { color: var(--green); border: 1px solid var(--green); }
+    .health-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
     }
 
-    @media (max-width: 1320px) {
-      .app {
-        grid-template-columns: 1fr;
-      }
-
-      .kpis,
-      .main-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+    /* — FOOTER — */
+    .footer {
+      padding: 16px 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--panel);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .footer-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+    .footer-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: var(--muted);
     }
 
-    @media (max-width: 900px) {
-      .kpis,
-      .main-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        flex-direction: column;
-      }
-    }
+    /* — SCROLLBAR — */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--scrollbar-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
   </style>
 </head>
-<body>
+<body data-theme="dark">
   <div class="app">
-    <aside class="left card">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
       <div class="brand-block">
-        <div class="logo" aria-label="FRAME logo">
+        <div class="logo">
           <span class="bracket">[</span><span class="word">FRAME</span><span class="bracket">]</span>
         </div>
         <div class="tagline">SHARED INTELLIGENCE HUB</div>
-        <h1 class="brand-title">SHARED ANALYTICS</h1>
+        <div class="brand-title">SHARED ANALYTICS</div>
         <p class="brand-copy">Privacy-preserving ecosystem analytics for partner organizations. Shared insight, safe benchmarking, no raw-data exposure.</p>
       </div>
 
-      <section class="nav-section card" style="box-shadow:none;">
-        <h2 class="nav-title">[WORKSPACE]</h2>
-        <div class="nav-list">
-          <div class="nav-item active">Ecosystem overview <span class="pill">LIVE</span></div>
-          <div class="nav-item">Benchmarking <span class="pill data">SAFE</span></div>
-          <div class="nav-item">Partner health</div>
-          <div class="nav-item">Insight feed</div>
-          <div class="nav-item">Privacy controls</div>
-        </div>
-      </section>
+      <nav class="nav-section card">
+        <div class="nav-title">[WORKSPACE]</div>
+        <ul class="nav-list">
+          <li class="nav-item active">ECOSYSTEM OVERVIEW <span class="pill">LIVE</span></li>
+          <li class="nav-item">BENCHMARKING <span class="pill data">SAFE</span></li>
+          <li class="nav-item">PARTNER HEALTH</li>
+          <li class="nav-item">INSIGHT FEED</li>
+          <li class="nav-item">PRIVACY CONTROLS</li>
+        </ul>
+      </nav>
 
-      <section class="filter-section card" style="box-shadow:none;">
-        <h2 class="nav-title">[FILTERS]</h2>
+      <div class="filter-section card">
+        <div class="nav-title">[FILTERS]</div>
         <div class="filter-grid">
           <div>
-            <label>Time range</label>
-            <select>
+            <div class="filter-label">TIME RANGE</div>
+            <select class="filter-select">
               <option>Last 7 days</option>
               <option>Last 30 days</option>
               <option>This quarter</option>
             </select>
           </div>
           <div>
-            <label>Region</label>
-            <select>
+            <div class="filter-label">REGION</div>
+            <select class="filter-select">
               <option>Global</option>
               <option>United States</option>
               <option>Europe</option>
@@ -568,8 +573,8 @@
             </select>
           </div>
           <div>
-            <label>Partner type</label>
-            <select>
+            <div class="filter-label">PARTNER TYPE</div>
+            <select class="filter-select">
               <option>All partner types</option>
               <option>Campus</option>
               <option>Community</option>
@@ -578,164 +583,180 @@
             </select>
           </div>
           <div>
-            <label>Visible comparison</label>
-            <div class="fake-field">Your organization vs ecosystem median</div>
+            <div class="filter-label">VISIBLE COMPARISON</div>
+            <div class="filter-note">Your organization vs ecosystem median</div>
           </div>
         </div>
-      </section>
+      </div>
     </aside>
 
-    <main class="center">
+    <!-- HEADER -->
+    <header class="header-bar">
+      <div class="header-title">FRAME SHARED ANALYTICS &mdash; ECOSYSTEM VIEW</div>
+      <div class="theme-toggle" onclick="toggleTheme()">
+        <span class="theme-label">THEME</span>
+        <div class="theme-toggle-track">
+          <div class="theme-toggle-thumb"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- HERO -->
       <section class="hero card">
-        <div>
-          <h1 class="page-title">RELEVANT ANALYTICS WITHOUT EXPOSING PARTNER DATA</h1>
-          <p class="hero-copy">This mockup shows how FRAME can return ecosystem insight, performance benchmarks, and trend signals while keeping raw organizational data private. Partners see only approved aggregates, privacy-thresholded comparisons, and safe operational summaries.</p>
-        </div>
+        <div class="page-title">RELEVANT ANALYTICS WITHOUT EXPOSING PARTNER DATA</div>
+        <p class="hero-copy">This mockup shows how FRAME can return ecosystem insight, performance benchmarks, and trend signals without ever exposing raw partner data. Every figure below is aggregated, anonymized, or suppressed if the cohort is too small.</p>
         <div class="hero-actions">
-          <button class="btn">EXPORT SAFE REPORT</button>
+          <button class="btn primary">EXPORT SAFE REPORT</button>
           <button class="btn">VIEW AUDIT LOG</button>
-          <button class="btn primary">PRIVACY STATUS: PROTECTED</button>
+          <button class="btn">PRIVACY STATUS: PROTECTED</button>
         </div>
       </section>
 
+      <!-- KPIs -->
       <section class="kpis">
-        <article class="kpi card">
+        <div class="kpi card">
           <div class="kpi-label">ACTIVE INCIDENTS</div>
-          <div class="kpi-value threat">14</div>
-          <div class="kpi-copy">Aggregated across eligible partners. Minimum cohort threshold enforced.</div>
-        </article>
-        <article class="kpi card">
+          <div class="kpi-value threat">3</div>
+          <div class="kpi-desc">Aggregated across eligible partners. Minimum cohort threshold enforced.</div>
+        </div>
+        <div class="kpi card">
           <div class="kpi-label">MEDIAN RESPONSE TIME</div>
-          <div class="kpi-value brand">42M</div>
-          <div class="kpi-copy">Compared to your organization at 36 minutes, without naming peer organizations.</div>
-        </article>
-        <article class="kpi card">
+          <div class="kpi-value">42M</div>
+          <div class="kpi-desc">Compared to your organization at 36 minutes, without naming peer organizations.</div>
+        </div>
+        <div class="kpi card">
           <div class="kpi-label">PARTNER PARTICIPATION</div>
-          <div class="kpi-value data">8/11</div>
-          <div class="kpi-copy">Active contribution this week. Identities hidden unless mutually visible by policy.</div>
-        </article>
-        <article class="kpi card">
+          <div class="kpi-value">8/11</div>
+          <div class="kpi-desc">Active contribution this week. Identities hidden unless mutually visible by policy.</div>
+        </div>
+        <div class="kpi card">
           <div class="kpi-label">DATA FRESHNESS</div>
-          <div class="kpi-value data">91%</div>
-          <div class="kpi-copy">Normalized ingestion health across approved connectors and safe exports.</div>
-        </article>
+          <div class="kpi-value">91%</div>
+          <div class="kpi-desc">Normalized ingestion health across approved connectors and safe exports.</div>
+        </div>
       </section>
 
-      <section class="main-grid">
-        <section class="panel card">
-          <div class="panel-head">
-            <div>
-              <h2 class="panel-title">[BENCHMARK WITHOUT EXPOSURE]</h2>
-              <p class="panel-note">No peer names. No raw campaign rows. Only approved comparative views.</p>
-            </div>
-            <span class="pill data">THRESHOLD MET</span>
+      <!-- BENCHMARK + INSIGHT FEED -->
+      <section class="two-col">
+        <div class="section-card card">
+          <div class="section-title">[BENCHMARK WITHOUT EXPOSURE]</div>
+          <div class="section-subtitle">No peer names. No raw campaign rows. Only approved comparative views.</div>
+          <div class="bench-status">THRESHOLD MET</div>
+          <div class="bench-row">
+            <span class="bench-label">Your org</span>
+            <span class="bench-val">36m</span>
           </div>
-          <div class="chart">
-            <div class="column">
-              <div class="bar brand" style="height: 230px;"></div>
-              <div class="bar-label">Your org<br><strong>36m</strong></div>
-            </div>
-            <div class="column">
-              <div class="bar data" style="height: 188px;"></div>
-              <div class="bar-label">Ecosystem median<br><strong>42m</strong></div>
-            </div>
-            <div class="column">
-              <div class="bar data" style="height: 150px;"></div>
-              <div class="bar-label">Top quartile<br><strong>31m</strong></div>
-            </div>
-            <div class="column">
-              <div class="bar brand" style="height: 165px;"></div>
-              <div class="bar-label">Safe reach index<br><strong>118</strong></div>
-            </div>
-            <div class="column">
-              <div class="bar threat" style="height: 198px;"></div>
-              <div class="bar-label">Threat rise index<br><strong>+14%</strong></div>
-            </div>
+          <div class="bench-row">
+            <span class="bench-label">Ecosystem median</span>
+            <span class="bench-val">42m</span>
           </div>
-        </section>
+          <div class="bench-row">
+            <span class="bench-label">Top quartile</span>
+            <span class="bench-val">31m</span>
+          </div>
+          <div class="bench-row">
+            <span class="bench-label">Safe reach index</span>
+            <span class="bench-val">118</span>
+          </div>
+          <div class="bench-row">
+            <span class="bench-label">Threat rise index</span>
+            <span class="bench-val threat">+14%</span>
+          </div>
+        </div>
 
-        <section class="panel card">
-          <div class="panel-head">
-            <div>
-              <h2 class="panel-title">[SHARED INSIGHT FEED]</h2>
-              <p class="panel-note">Actionable conclusions generated from aggregate patterns only.</p>
-            </div>
+        <div class="section-card card">
+          <div class="section-title">[SHARED INSIGHT FEED]</div>
+          <div class="section-subtitle">Actionable conclusions generated from aggregate patterns only.</div>
+          <div class="insight-item">
+            <div class="insight-title">Campus narratives are rising faster than community channels</div>
+            <div class="insight-desc">Trend acceleration detected over the last 72 hours. Suggested action: deploy faster rebuttal packages to campus-facing teams.</div>
           </div>
-          <div class="insights">
-            <article class="insight-item">
-              <h3 class="insight-title">Campus narratives are rising faster than community channels</h3>
-              <p class="insight-copy">Trend acceleration detected over the last 72 hours. Suggested action: deploy faster rebuttal packages to campus-facing partners.</p>
-            </article>
-            <article class="insight-item warning">
-              <h3 class="insight-title">Arabic video assets outperform static formats this week</h3>
-              <p class="insight-copy">Cross-partner aggregate indicates stronger completion and share rates for short-form video in Arabic language campaigns.</p>
-            </article>
-            <article class="insight-item threat">
-              <h3 class="insight-title">Weekend coordination gap remains the main delay factor</h3>
-              <p class="insight-copy">Median response lag rises when fewer than six partners contribute fresh data. Consider alert escalation on Fridays.</p>
-            </article>
+          <div class="insight-item">
+            <div class="insight-title">Arabic video assets outperform static formats this week</div>
+            <div class="insight-desc">Cross-partner aggregate indicates stronger completion and share rates for short-form video in Arabic-language markets.</div>
           </div>
-        </section>
+          <div class="insight-item">
+            <div class="insight-title">Weekend coordination gap remains the main delay factor</div>
+            <div class="insight-desc">Median response lag rises when fewer than six partners contribute fresh data. Consider alert escalation policies.</div>
+          </div>
+        </div>
       </section>
+
+      <!-- PRIVACY CONTROLS + PARTNER HEALTH -->
+      <section class="bottom-sections">
+        <div class="section-card card">
+          <div class="section-title">[PRIVACY CONTROLS]</div>
+          <div class="section-subtitle">What is visible, what stays private, and why.</div>
+          <div class="bench-status" style="border-color:var(--red);color:var(--red);">ENFORCED</div>
+          <div class="privacy-row">
+            <span class="privacy-label">Raw donor, audience, and CRM data</span>
+            <span class="privacy-status enforced">NEVER SHARED</span>
+          </div>
+          <div class="privacy-row">
+            <span class="privacy-label">Named organization benchmarking</span>
+            <span class="privacy-status blocked">BLOCKED</span>
+          </div>
+          <div class="privacy-row">
+            <span class="privacy-label">Aggregate ecosystem medians and quartiles</span>
+            <span class="privacy-status allowed">ALLOWED</span>
+          </div>
+          <div class="privacy-row">
+            <span class="privacy-label">Insights below minimum cohort threshold</span>
+            <span class="privacy-status suppressed">SUPPRESSED</span>
+          </div>
+          <div class="privacy-row">
+            <span class="privacy-label">Exported reports with audit trail</span>
+            <span class="privacy-status approved">APPROVED</span>
+          </div>
+          <p class="privacy-note">Minimum cohort size: 5 partners. Identity masking enabled. All benchmarks shown here are cohort-based and never traceable to a single organization.</p>
+        </div>
+
+        <div class="section-card card">
+          <div class="section-title">[PARTNER HEALTH]</div>
+          <div class="section-subtitle">Operational readiness without exposing peer internals.</div>
+          <div class="health-item">
+            <div class="health-header">
+              <span class="health-label">DATA COMPLETENESS</span>
+              <span class="health-badge high">HIGH</span>
+            </div>
+            <div class="health-desc">Required signal coverage is above threshold across approved partner cohorts.</div>
+          </div>
+          <div class="health-item">
+            <div class="health-header">
+              <span class="health-label">LATENCY RISK</span>
+              <span class="health-badge moderate">MODERATE</span>
+            </div>
+            <div class="health-desc">Weekend and overnight sync delays remain the main source of ecosystem response variance.</div>
+          </div>
+          <div class="health-item">
+            <div class="health-header">
+              <span class="health-label">AUDIT STATE</span>
+              <span class="health-badge current">CURRENT</span>
+            </div>
+            <div class="health-desc">Latest safe analytics export logged two hours ago. No privacy-policy violations detected.</div>
+          </div>
+        </div>
+      </section>
+
     </main>
 
-    <aside class="right">
-      <section class="panel card">
-        <div class="panel-head">
-          <div>
-            <h2 class="panel-title">[PRIVACY CONTROLS]</h2>
-            <p class="panel-note">What is visible, what stays private, and why.</p>
-          </div>
-          <span class="pill">ENFORCED</span>
-        </div>
-        <div class="rows">
-          <div class="row">
-            <div class="row-copy">Raw donor, audience, and CRM data</div>
-            <span class="pill threat">Never shared</span>
-          </div>
-          <div class="row">
-            <div class="row-copy">Named organization benchmarking</div>
-            <span class="pill threat">Blocked</span>
-          </div>
-          <div class="row">
-            <div class="row-copy">Aggregate ecosystem medians and quartiles</div>
-            <span class="pill data">Allowed</span>
-          </div>
-          <div class="row">
-            <div class="row-copy">Insights below minimum cohort threshold</div>
-            <span class="pill threat">Suppressed</span>
-          </div>
-          <div class="row">
-            <div class="row-copy">Exported reports with audit trail</div>
-            <span class="pill">Approved</span>
-          </div>
-        </div>
-        <p class="foot-note">Minimum cohort size: 5 partners. Identity masking enabled. All benchmarks shown here are cohort-based and policy filtered.</p>
-      </section>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <span class="footer-text">FRAME &mdash; SHARED INTELLIGENCE HUB &mdash; ANALYTICS MODULE</span>
+      <span class="footer-mono">MOCKUP v2.0 &bull; PRIVACY-FIRST</span>
+    </footer>
 
-      <section class="panel card">
-        <div class="panel-head">
-          <div>
-            <h2 class="panel-title">[PARTNER HEALTH]</h2>
-            <p class="panel-note">Operational readiness without exposing peer internals.</p>
-          </div>
-        </div>
-        <div class="rows">
-          <div class="small-card">
-            <div class="small-head"><span>Data completeness</span><span class="pill data">High</span></div>
-            <p class="small-copy">Required signal coverage is above threshold across approved partner cohorts.</p>
-          </div>
-          <div class="small-card">
-            <div class="small-head"><span>Latency risk</span><span class="pill">Moderate</span></div>
-            <p class="small-copy">Weekend and overnight sync delays remain the main source of ecosystem response variance.</p>
-          </div>
-          <div class="small-card">
-            <div class="small-head"><span>Audit state</span><span class="pill data">Current</span></div>
-            <p class="small-copy">Latest safe analytics export logged two hours ago. No privacy-policy violations detected.</p>
-          </div>
-        </div>
-      </section>
-    </aside>
   </div>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const current = body.getAttribute('data-theme');
+      body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    }
+  </script>
 </body>
 </html>
