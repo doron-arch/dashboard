@@ -61,3 +61,12 @@ python3 -m http.server 8000
 │   └── deep-link.js           # URL query-param sync (Phase 6c)
 └── docs/screenshots/          # (TODO)
 ```
+
+## Related FRAME repos
+
+- [frame-dashboard](https://github.com/doron-arch/frame-dashboard) — FRAME operational dashboard (Vite + React) · [live](https://doron-arch.github.io/frame-dashboard/)
+- [frame-technology-demo](https://github.com/doron-arch/frame-technology-demo) — Technology platform demo (vanilla JS) · [live](https://doron-arch.github.io/frame-technology-demo/)
+
+## License
+
+All rights reserved © FRAME.
