@@ -525,6 +525,49 @@
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--scrollbar-bg); }
     ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+
+    /* FRAME Tooltip (Phase 8) */
+    .frame-tooltip {
+      position: absolute;
+      background: #1A2058;
+      color: #FFFFFF;
+      font-size: 11px;
+      padding: 6px 12px;
+      border-radius: 4px;
+      border: 1px solid #2E3880;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      z-index: 9999;
+      pointer-events: none;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.5px;
+      max-width: 300px;
+      white-space: normal;
+      line-height: 1.4;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 120ms ease;
+    }
+    .frame-tooltip.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    .frame-tooltip-arrow {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+    }
+    .frame-tooltip.above .frame-tooltip-arrow {
+      top: 100%;
+      border-top: 6px solid #1A2058;
+      transform: translateX(-50%);
+    }
+    .frame-tooltip.below .frame-tooltip-arrow {
+      bottom: 100%;
+      border-bottom: 6px solid #1A2058;
+      transform: translateX(-50%);
+    }
   </style>
 </head>
 <body data-theme="dark">
@@ -544,11 +587,11 @@
       <nav class="nav-section card">
         <div class="nav-title">[WORKSPACE]</div>
         <ul class="nav-list">
-          <li class="nav-item active">ECOSYSTEM OVERVIEW <span class="pill">LIVE</span></li>
-          <li class="nav-item">BENCHMARKING <span class="pill data">SAFE</span></li>
-          <li class="nav-item">PARTNER HEALTH</li>
-          <li class="nav-item">INSIGHT FEED</li>
-          <li class="nav-item">PRIVACY CONTROLS</li>
+          <li class="nav-item active" data-tooltip="High-level view of shared analytics across eligible partners" data-tooltip-below="true" tabindex="0">ECOSYSTEM OVERVIEW <span class="pill">LIVE</span></li>
+          <li class="nav-item" data-tooltip="Compare your performance against ecosystem medians without exposing peers" data-tooltip-below="true" tabindex="0">BENCHMARKING <span class="pill data">SAFE</span></li>
+          <li class="nav-item" data-tooltip="Operational readiness signals, no peer internals exposed" data-tooltip-below="true" tabindex="0">PARTNER HEALTH</li>
+          <li class="nav-item" data-tooltip="Cross-partner patterns from the last 72 hours" data-tooltip-below="true" tabindex="0">INSIGHT FEED</li>
+          <li class="nav-item" data-tooltip="What data is visible, blocked, or aggregated — and why" data-tooltip-below="true" tabindex="0">PRIVACY CONTROLS</li>
         </ul>
       </nav>
 
@@ -557,7 +600,7 @@
         <div class="filter-grid">
           <div>
             <div class="filter-label">TIME RANGE</div>
-            <select class="filter-select">
+            <select class="filter-select" data-tooltip="Aggregation window for all metrics on this page">
               <option>Last 7 days</option>
               <option>Last 30 days</option>
               <option>This quarter</option>
@@ -565,7 +608,7 @@
           </div>
           <div>
             <div class="filter-label">REGION</div>
-            <select class="filter-select">
+            <select class="filter-select" data-tooltip="Geographic scope filter (Global, US, EU, IL)">
               <option>Global</option>
               <option>United States</option>
               <option>Europe</option>
@@ -574,7 +617,7 @@
           </div>
           <div>
             <div class="filter-label">PARTNER TYPE</div>
-            <select class="filter-select">
+            <select class="filter-select" data-tooltip="Filter by partner organization category">
               <option>All partner types</option>
               <option>Campus</option>
               <option>Community</option>
@@ -609,30 +652,30 @@
         <div class="page-title">RELEVANT ANALYTICS WITHOUT EXPOSING PARTNER DATA</div>
         <p class="hero-copy">This mockup shows how FRAME can return ecosystem insight, performance benchmarks, and trend signals without ever exposing raw partner data. Every figure below is aggregated, anonymized, or suppressed if the cohort is too small.</p>
         <div class="hero-actions">
-          <button class="btn primary">EXPORT SAFE REPORT</button>
-          <button class="btn">VIEW AUDIT LOG</button>
-          <button class="btn">PRIVACY STATUS: PROTECTED</button>
+          <button class="btn primary" data-tooltip="Download an audit-trailed report with only approved aggregations">EXPORT SAFE REPORT</button>
+          <button class="btn" data-tooltip="See who accessed what, when, and why">VIEW AUDIT LOG</button>
+          <button class="btn" data-tooltip="All metrics passed k-anonymity (k≥3) and differential-privacy thresholds">PRIVACY STATUS: PROTECTED</button>
         </div>
       </section>
 
       <!-- KPIs -->
       <section class="kpis">
-        <div class="kpi card">
+        <div class="kpi card" data-tooltip="Incidents currently tracked across eligible partners. Minimum cohort threshold enforced.">
           <div class="kpi-label">ACTIVE INCIDENTS</div>
           <div class="kpi-value threat">3</div>
           <div class="kpi-desc">Aggregated across eligible partners. Minimum cohort threshold enforced.</div>
         </div>
-        <div class="kpi card">
+        <div class="kpi card" data-tooltip="Median time from detection to first partner action. Your organization is benchmarked without naming peers.">
           <div class="kpi-label">MEDIAN RESPONSE TIME</div>
           <div class="kpi-value">42M</div>
           <div class="kpi-desc">Compared to your organization at 36 minutes, without naming peer organizations.</div>
         </div>
-        <div class="kpi card">
+        <div class="kpi card" data-tooltip="Partners actively contributing this week. Identities hidden unless mutually visible by policy.">
           <div class="kpi-label">PARTNER PARTICIPATION</div>
           <div class="kpi-value">8/11</div>
           <div class="kpi-desc">Active contribution this week. Identities hidden unless mutually visible by policy.</div>
         </div>
-        <div class="kpi card">
+        <div class="kpi card" data-tooltip="Normalized ingestion health across approved connectors and safe exports.">
           <div class="kpi-label">DATA FRESHNESS</div>
           <div class="kpi-value">91%</div>
           <div class="kpi-desc">Normalized ingestion health across approved connectors and safe exports.</div>
@@ -670,15 +713,15 @@
         <div class="section-card card">
           <div class="section-title">[SHARED INSIGHT FEED]</div>
           <div class="section-subtitle">Actionable conclusions generated from aggregate patterns only.</div>
-          <div class="insight-item">
+          <div class="insight-item" data-tooltip="Trend acceleration detected over the last 72 hours. Suggested action: deploy faster counter-messaging on campus channels.">
             <div class="insight-title">Campus narratives are rising faster than community channels</div>
             <div class="insight-desc">Trend acceleration detected over the last 72 hours. Suggested action: deploy faster rebuttal packages to campus-facing teams.</div>
           </div>
-          <div class="insight-item">
+          <div class="insight-item" data-tooltip="Cross-partner aggregate indicates stronger completion and share rates for short-form Arabic video.">
             <div class="insight-title">Arabic video assets outperform static formats this week</div>
             <div class="insight-desc">Cross-partner aggregate indicates stronger completion and share rates for short-form video in Arabic-language markets.</div>
           </div>
-          <div class="insight-item">
+          <div class="insight-item" data-tooltip="Median response lag rises when fewer than six partners contribute fresh data. Consider weekend rotation.">
             <div class="insight-title">Weekend coordination gap remains the main delay factor</div>
             <div class="insight-desc">Median response lag rises when fewer than six partners contribute fresh data. Consider alert escalation policies.</div>
           </div>
@@ -691,23 +734,23 @@
           <div class="section-title">[PRIVACY CONTROLS]</div>
           <div class="section-subtitle">What is visible, what stays private, and why.</div>
           <div class="bench-status" style="border-color:var(--red);color:var(--red);">ENFORCED</div>
-          <div class="privacy-row">
+          <div class="privacy-row" data-tooltip="Raw identifying data never leaves your systems">
             <span class="privacy-label">Raw donor, audience, and CRM data</span>
             <span class="privacy-status enforced">NEVER SHARED</span>
           </div>
-          <div class="privacy-row">
+          <div class="privacy-row" data-tooltip="Direct comparisons that name a peer organization are prohibited by policy">
             <span class="privacy-label">Named organization benchmarking</span>
             <span class="privacy-status blocked">BLOCKED</span>
           </div>
-          <div class="privacy-row">
+          <div class="privacy-row" data-tooltip="Released only when at least 3 partners contribute (k-anonymity threshold)">
             <span class="privacy-label">Aggregate ecosystem medians and quartiles</span>
             <span class="privacy-status allowed">ALLOWED</span>
           </div>
-          <div class="privacy-row">
+          <div class="privacy-row" data-tooltip="Hidden when fewer than the cohort minimum contribute, to prevent re-identification">
             <span class="privacy-label">Insights below minimum cohort threshold</span>
             <span class="privacy-status suppressed">SUPPRESSED</span>
           </div>
-          <div class="privacy-row">
+          <div class="privacy-row" data-tooltip="Exports leave an immutable audit trail accessible to compliance">
             <span class="privacy-label">Exported reports with audit trail</span>
             <span class="privacy-status approved">APPROVED</span>
           </div>
@@ -764,5 +807,6 @@
   <script src="js/privacy/differential-privacy.js"></script>
   <script src="js/privacy-dashboard.js"></script>
   <script src="js/deep-link.js"></script>
+  <script src="js/tooltip.js"></script>
 </body>
 </html>
