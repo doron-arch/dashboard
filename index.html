@@ -669,9 +669,47 @@
       padding: 2px 6px;
       border-radius: 4px;
     }
+
+    /* — Accessibility (Phase 10B) — */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 12px;
+      z-index: 10000;
+      padding: 10px 16px;
+      background: var(--DARK-NAVY, #06061A);
+      color: var(--ELECTRIC-BLUE, #4FC3F7);
+      border: 2px solid var(--ELECTRIC-BLUE, #4FC3F7);
+      border-radius: 6px;
+      font: 600 13px/1 'Inter', system-ui, sans-serif;
+      text-decoration: none;
+      transition: top 150ms ease;
+    }
+    .skip-link:focus {
+      top: 12px;
+      outline: none;
+    }
+    *:focus-visible {
+      outline: 2px solid var(--ELECTRIC-BLUE, #4FC3F7);
+      outline-offset: 2px;
+      border-radius: 3px;
+    }
+    button:focus-visible,
+    a:focus-visible,
+    [role="button"]:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid var(--ELECTRIC-BLUE, #4FC3F7);
+      outline-offset: 3px;
+    }
+    /* — Heading reset for content sections — */
+    h2.page-title,
+    h2.section-title {
+      margin-top: 0;
+    }
   </style>
 </head>
 <body data-theme="dark">
+<a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="app">
 
     <!-- SIDEBAR -->
@@ -688,7 +726,7 @@
       <nav class="nav-section card">
         <div class="nav-title">[WORKSPACE]</div>
         <ul class="nav-list">
-          <li class="nav-item active" data-tooltip="High-level view of shared analytics across eligible partners" data-tooltip-below="true" tabindex="0">ECOSYSTEM OVERVIEW <span class="pill">LIVE</span></li>
+          <li class="nav-item active" data-tooltip="High-level view of shared analytics across eligible partners" data-tooltip-below="true" tabindex="0" aria-current="page">ECOSYSTEM OVERVIEW <span class="pill">LIVE</span></li>
           <li class="nav-item" data-tooltip="Compare your performance against ecosystem medians without exposing peers" data-tooltip-below="true" tabindex="0">BENCHMARKING <span class="pill data">SAFE</span></li>
           <li class="nav-item" data-tooltip="Operational readiness signals, no peer internals exposed" data-tooltip-below="true" tabindex="0">PARTNER HEALTH</li>
           <li class="nav-item" data-tooltip="Cross-partner patterns from the last 72 hours" data-tooltip-below="true" tabindex="0">INSIGHT FEED</li>
@@ -736,7 +774,7 @@
 
     <!-- HEADER -->
     <header class="header-bar">
-      <div class="header-title">FRAME SHARED ANALYTICS &mdash; ECOSYSTEM VIEW</div>
+      <h1 class="header-title">FRAME SHARED ANALYTICS &mdash; ECOSYSTEM VIEW</h1>
       <div class="theme-toggle" onclick="toggleTheme()">
         <span class="theme-label">THEME</span>
         <div class="theme-toggle-track">
@@ -746,11 +784,11 @@
     </header>
 
     <!-- MAIN -->
-    <main class="main">
+    <main class="main" id="main-content">
 
       <!-- HERO -->
       <section class="hero card">
-        <div class="page-title">RELEVANT ANALYTICS WITHOUT EXPOSING PARTNER DATA</div>
+        <h2 class="page-title">RELEVANT ANALYTICS WITHOUT EXPOSING PARTNER DATA</h2>
         <p class="hero-copy">This mockup shows how FRAME can return ecosystem insight, performance benchmarks, and trend signals without ever exposing raw partner data. Every figure below is aggregated, anonymized, or suppressed if the cohort is too small.</p>
         <div class="hero-actions">
           <button class="btn primary" data-tooltip="Download an audit-trailed report with only approved aggregations">EXPORT SAFE REPORT</button>
@@ -786,7 +824,7 @@
       <!-- BENCHMARK + INSIGHT FEED -->
       <section class="two-col">
         <div class="section-card card">
-          <div class="section-title">[BENCHMARK WITHOUT EXPOSURE]</div>
+          <h2 class="section-title">[BENCHMARK WITHOUT EXPOSURE]</h2>
           <div class="section-subtitle">No peer names. No raw campaign rows. Only approved comparative views.</div>
           <div class="bench-status">THRESHOLD MET</div>
           <div class="bench-row">
@@ -812,7 +850,7 @@
         </div>
 
         <div class="section-card card">
-          <div class="section-title">[SHARED INSIGHT FEED]</div>
+          <h2 class="section-title">[SHARED INSIGHT FEED]</h2>
           <div class="section-subtitle">Actionable conclusions generated from aggregate patterns only.</div>
           <div class="insight-item" data-tooltip="Trend acceleration detected over the last 72 hours. Suggested action: deploy faster counter-messaging on campus channels.">
             <div class="insight-title">Campus narratives are rising faster than community channels</div>
@@ -832,7 +870,7 @@
       <!-- PRIVACY CONTROLS + PARTNER HEALTH -->
       <section class="bottom-sections">
         <div class="section-card card">
-          <div class="section-title">[PRIVACY CONTROLS]</div>
+          <h2 class="section-title">[PRIVACY CONTROLS]</h2>
           <div class="section-subtitle">What is visible, what stays private, and why.</div>
           <div class="bench-status" style="border-color:var(--red);color:var(--red);">ENFORCED</div>
           <div class="privacy-row" data-tooltip="Raw identifying data never leaves your systems">
@@ -859,7 +897,7 @@
         </div>
 
         <div class="section-card card">
-          <div class="section-title">[PARTNER HEALTH]</div>
+          <h2 class="section-title">[PARTNER HEALTH]</h2>
           <div class="section-subtitle">Operational readiness without exposing peer internals.</div>
           <div class="health-item">
             <div class="health-header">
