@@ -1,0 +1,44 @@
+{
+  "$schema": "https://doron-arch.github.io/brand.schema.json",
+  "name": "FRAME Brand Specs",
+  "version": "2.0",
+  "canonical": true,
+  "note": "Single source of truth for FRAME brand across all 3 mockup repos. Keep this file byte-identical across: doron-arch/dashboard, doron-arch/frame-technology-demo, doron-arch/frame-dashboard.",
+  "colors": {
+    "INDIGO": "#1800AD",
+    "ELECTRIC_BLUE": "#4FC3F7",
+    "CORAL_RED": "#FF5252",
+    "CORAL_LIGHT": "#FF8A80",
+    "DARK_NAVY": "#06061A"
+  },
+  "semanticColors": {
+    "accent": "#4FC3F7",
+    "accentStrong": "#1800AD",
+    "danger": "#FF5252",
+    "warning": "#FF8A80",
+    "bgDark": "#06061A",
+    "textOnDark": "#FFFFFF",
+    "textMutedOnDark": "#B0B0B0",
+    "borderDark": "#1A1A3A",
+    "surfaceDark": "#0C0C24",
+    "surfaceDark2": "#101030"
+  },
+  "typography": {
+    "fontFamily": "'Inter', system-ui, -apple-system, sans-serif",
+    "monoFamily": "'JetBrains Mono', ui-monospace, monospace",
+    "displayFamily": "'Bebas Neue', sans-serif"
+  },
+  "radii": {
+    "sm": 6,
+    "md": 10,
+    "lg": 14,
+    "pill": 999
+  },
+  "spacing": {
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 20,
+    "xl": 32
+  }
+}
