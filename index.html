@@ -936,10 +936,21 @@
   <script src="js/frame-schemas.js"></script>
   <script>
     function toggleTheme() {
-      const body = document.body;
-      const current = body.getAttribute('data-theme');
-      body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+      const current = document.body.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.body.setAttribute('data-theme', next);
+      localStorage.setItem('frame-theme', next);
     }
+    // ── Cross-tab theme sync ──
+    (function applyStoredTheme() {
+      const saved = localStorage.getItem('frame-theme');
+      if (saved) document.body.setAttribute('data-theme', saved);
+    })();
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'frame-theme' && e.newValue) {
+        document.body.setAttribute('data-theme', e.newValue);
+      }
+    });
   </script>
   <script src="js/demo-data.js"></script>
   <script src="js/privacy/k-anonymity.js"></script>
