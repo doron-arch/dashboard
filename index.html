@@ -944,7 +944,12 @@
     // ── Cross-tab theme sync ──
     (function applyStoredTheme() {
       const saved = localStorage.getItem('frame-theme');
-      if (saved) document.body.setAttribute('data-theme', saved);
+      if (saved) {
+        document.body.setAttribute('data-theme', saved);
+      } else {
+        const prefersDark = !window.matchMedia('(prefers-color-scheme: light)').matches;
+        document.body.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      }
     })();
     window.addEventListener('storage', function(e) {
       if (e.key === 'frame-theme' && e.newValue) {
